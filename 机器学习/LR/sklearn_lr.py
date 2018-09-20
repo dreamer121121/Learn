@@ -18,14 +18,12 @@ y_train=train_data[:,3]
 lr=LogisticRegression()
 #print (X_train)
 #print (type(y_train))
-lr.fit(X_train,y_train)#=训练过程不可见
+lr.fit(X_train,y_train)#训练过程不可见
 #获取测试样本
 test_data=pd.read_csv('breast-cancer-test.csv').values
 test_input=test_data[:,1:3]
 result=lr.predict(test_input).tolist()
-#------------------------------------------------------------
-
-
+#----------------------------------------------------------
 #画出测试集样本点
 ax=plt.subplot(111)
 ax.set_xlabel('Clump Thickness')
