@@ -1,8 +1,8 @@
-
 import requests
 import stations1
 from prettytable import PrettyTable
 import urllib3
+import json
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
  
 def cli():
@@ -12,24 +12,24 @@ def cli():
     options = input("请输入列车类型（格式g、d、t、k、z）: ");
     from_station = stations1.get_telecode(str)#查找相应站点的代号
     to_station = stations1.get_telecode(str1)
-    url = ('https://kyfw.12306.cn/otn/leftTicket/queryO?'
+    url = ('https://kyfw.12306.cn/otn/leftTicket/queryA?'
           'leftTicketDTO.train_date={}&'
           'leftTicketDTO.from_station={}&'
           'leftTicketDTO.to_station={}&'
           'purpose_codes=ADULT').format(date,from_station,to_station)
     r = requests.get(url, verify=False)
-    raw_trains = r.json()['data']['result']
+    raw_trains = r.json()['data']['result'] 
     pt = PrettyTable()
-    pt._set_field_names('车次 车站 时间 历时 商务座 一等座 二等座 动卧 软卧 硬卧 硬座 无座'.split())
+    pt._set_field_names('车次 出发|到达车站 时间 历时 商务座 一等座 二等座 动卧 软卧 硬卧 硬座 无座'.split())
+    f=open('trains.txt','w')
     for raw_train in raw_trains:
         data_list = raw_train.split('|')
+        f.write(json.dumps(data_list))
         train_no = data_list[3]
         initial = train_no[0].lower()
         if not options or initial in options:
             from_station_code = data_list[6]
             to_station_code = data_list[7]
-            from_station_name = ''
-            to_station_name = ''
             start_time = data_list[8]
             arrive_time = data_list[9]
             time_duration = data_list[10]
@@ -55,6 +55,7 @@ def cli():
                     no_seat
             ])
     print(pt)
+
  
 if __name__ == '__main__':
     cli()
