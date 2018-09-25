@@ -1,6 +1,5 @@
 import re
 import os
-os.chdir(r'C:\Users\outao\Desktop\work\爬虫')
 
 
 #12306存放站点代号的地址需要自己分析出来
@@ -15,11 +14,6 @@ stations = dict(result)  #把所获信息设置为一一对应（有点像是c++
 stations_codes=list(stations.values())
 stations_names=list(stations.keys())
 
-def get_telecode(d):
-    return stations[d]
-
-def get_name(code):
-    return stations_names[stations_codes.index(code)]
     
 
 
