@@ -7,7 +7,7 @@ mail_info = {
     "to": "2181990549@qq.com",
     "hostname": "smtp.qq.com",
     "username": "2761564455@qq.com",
-    "password": "2119851111",
+    "password": "umlwmfqlfnhwddhb",
     "mail_subject": "test",
     "mail_text": "hello, this is a test email, sended by py",
     "mail_encoding": "utf-8"
