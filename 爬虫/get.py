@@ -8,16 +8,16 @@ class operate_email:
     # 此函数通过使用smtplib实现发送邮件
     def send_email_by_smtp(self):
         # 用于发送邮件的邮箱。修改成自己的邮箱
-        sender_email_address = "your_email@qq.com"
+        sender_email_address = "2761564455@qq.com"
         # 用于发送邮件的邮箱的密码。修改成自己的邮箱的密码
-        sender_email_password = "your_email_password"
+        sender_email_password = "ilhwjqhzlelhdcfe"
         # 用于发送邮件的邮箱的smtp服务器，也可以直接是IP地址
         # 修改成自己邮箱的sntp服务器地址；qq邮箱不需要修改此值
-        smtp_server_host = "smtp.qq.com"
+        smtp_server_host = "smtp.qq.com"  # 由QQ提供
         # 修改成自己邮箱的sntp服务器监听的端口；qq邮箱不需要修改此值
         smtp_server_port = 465
         # 要发往的邮箱
-        receiver_email = "your_dest_email@qq.com"
+        receiver_email = "2181990549@qq.com"
         # 要发送的邮件主题
         message_subject = "Python smtp测试邮件"
         # 要发送的邮件内容
@@ -30,7 +30,7 @@ class operate_email:
         # 设置收件人（声称的）
         message["To"] = Header(receiver_email, "utf-8")
         # 设置邮件主题
-        message["Subject"] = Header(message_subject,"utf-8")
+        message["Subject"] = Header(message_subject, "utf-8")
 
         # 连接smtp服务器。如果没有使用SSL，将SMTP_SSL()改成SMTP()即可其他都不需要做改动
         email_client = smtplib.SMTP_SSL(smtp_server_host, smtp_server_port)
@@ -139,8 +139,8 @@ if __name__ == "__main__":
     # 实例化
     email_client = operate_email()
     # 调用发送邮件发送函数
-    #email_client.send_email_by_smtp()
+    email_client.send_email_by_smtp()
     # 调用通过pop3发送邮件的发送函数
-    email_client.recv_email_by_pop3()
+    #email_client.recv_email_by_pop3()
     # 调用通过imap4发送邮件的发送函数
     #email_client.recv_email_by_imap4()
