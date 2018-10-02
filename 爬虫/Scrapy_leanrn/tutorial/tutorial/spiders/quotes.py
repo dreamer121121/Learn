@@ -9,7 +9,7 @@ class QuotesSpider(scrapy.Spider):  # 用户自定义的爬虫必须继承自bas
     start_urls = ['http://quotes.toscrape.com/']  # 目标网站的url
 
     def parse(self, response):  # 此方法主要用于解析服务器返回的网页获取我们所需要的内容
-        tags=[]
+        tags = []
         soup = BeautifulSoup(response.text, 'lxml')
         quotes = soup.find_all('div', attrs={'class': 'quote'})
         for quote in quotes:
@@ -31,5 +31,5 @@ class QuotesSpider(scrapy.Spider):  # 用户自定义的爬虫必须继承自bas
 
         # 构造下一页的url
         next = response.css('.pager .next a::attr("href")').extract_first()
-        url = response.urljoin(next)
+        url = response.urljoin(next)  # 构造新的请求连接
         yield scrapy.Request(url=url, callback=self.parse)
