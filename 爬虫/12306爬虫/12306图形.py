@@ -12,7 +12,7 @@ D = []
 G = []
 Z = []
 T = []
-ticket=[]
+ticket = []
 
 def GetStation(var_from,var_to,number,tree,all,d,k,g,t,z):
       del ticket[:]
@@ -144,85 +144,93 @@ def FilterFun2():
     tree.tag_configure("evenLine2", background='#F1EBDE')
 '''
 
+
 def CheckTicketswindow():
-    window=Tk()
+    window = Tk()
     window.geometry("1135x600+400+300")
     window.title("火车票查询系统")
-    window.iconbitmap("train.ico")
-    #Frame框架，将几个组件放在一起
-    TopFrame=Frame(window,width=1135,height=150)
-    TLFrame=Frame(TopFrame,width=985,height=150)
-    TRFrame=Frame(TopFrame,width=150,height=150)
-    TLTFrame=Frame(TLFrame,width=985,height=75)
-    TLBFrame=Frame(TLFrame,width=985,height=75)
+    window.iconbitmap("meixi.ico")
+    # window.config(bg='orange')
+    window.resizable(0, 0)
+    # Frame框架，将几个组件放在一起
+    TopFrame = Frame(window, width=1135, height=150)
+    TLFrame = Frame(TopFrame, width=985, height=150)
+    TRFrame = Frame(TopFrame, width=150, height=150)
+    TLTFrame = Frame(TLFrame, width=985, height=75)
+    TLBFrame = Frame(TLFrame, width=985, height=75)
 
-    Label(TLTFrame,text="始发站:",font=("宋体",11)).pack(side=LEFT)
+    Label(TLTFrame, text="始发站:", font=("宋体", 11), bg='orange').pack(side=LEFT)
 
-    #StringVar跟踪变量的值的变化，以保证值的变更随时可以显示在界面上
-    var_from=StringVar()
-    From_s=Entry(TLTFrame,textvariable=var_from,width=14).pack(side=LEFT)
-    Label(TLTFrame,text="终点站:",font=("宋体",11),padx=20).pack(side=LEFT)
-    var_to=StringVar()
-    to_s=Entry(TLTFrame,textvariable=var_to,width=14).pack(side=LEFT)
 
-    #创建一个下拉列表
-    Label(TLTFrame,text="出发日期:",font=("宋体",11),padx=20).pack(side=LEFT)
+    # StringVar跟踪变量的值的变化，以保证值的变更随时可以显示在界面上
+    var_from = StringVar()
+    From_s = Entry(TLTFrame, textvariable=var_from, width=14).pack(side=LEFT)
+    Label(TLTFrame, text="终点站:", font=("宋体", 11), bg='orange', padx=20).pack(side=LEFT)
+    var_to = StringVar()
+    to_s = Entry(TLTFrame, textvariable=var_to, width=14).pack(side=LEFT)
+
+    # 创建一个下拉列表
+    Label(TLTFrame, text="出发日期:", font=("宋体", 11), bg='orange',padx=20).pack(side=LEFT)
     number=StringVar()
-    numberChose=ttk.Combobox(TLTFrame,width=12,textvariable=number)
+    numberChose=ttk.Combobox(TLTFrame, width=12, textvariable=number)
     values=[]
-    #获取今年今月今日
-    y=int(time.strftime("%Y",time.localtime()))
-    m=int(time.strftime("%m",time.localtime()))
-    day=int(time.strftime("%d",time.localtime()))
-    i=0
-    yy=y
-    mm=m
-    dd=day
-    while i<20:#20天数据
-          if m in (1,3,5,7,8,10,12):
-                if day+i>31:
-                      dd=day+i-31
-                      mm=m+1
-                      if mm>12:
-                        yy=y+1
-                        mm-=12
-                else: dd=day+i
-          elif m in (4,6,9,11):
-              if day+i>30:
-                  dd=day+i-30
-                  mm=m+1
-                  if mm>12:
-                      yy=y+1
-                      mm-=12
-              else: dd=day+i
-          else:
-              if day+i>28:
-                  dd=day+i-28
-                  mm=m+1
-                  if mm>12:
-                      yy=y+1
-                      mm-=12     #有问题闰年呢？
-              else: dd=day+i
-          Time='%d-%02d-%02d'%(yy,mm,dd)
-          values.append(Time)
-          i+=1
-    numberChose['values']=tuple(values)
-    numberChose.current(0)# 设置下拉列表默认显示的值，0为 numberChosen['values'] 的下标值
+    # 获取今年今月今日
+    y = int(time.strftime("%Y", time.localtime()))
+    m = int(time.strftime("%m", time.localtime()))
+    day = int(time.strftime("%d", time.localtime()))
+    i = 0
+    yy = y
+    mm = m
+    dd = day
+    while i < 20:  # 20天数据
+        if m in (1, 3, 5, 7, 8, 10, 12):
+            if day + i > 31:
+                dd = day + i - 31
+                mm = m + 1
+                if mm > 12:
+                    yy = y + 1
+                    mm -= 12
+            else:
+                dd = day + i
+        elif m in (4, 6, 9, 11):
+            if day + i > 30:
+                dd = day + i - 30
+                mm = m + 1
+                if mm > 12:
+                    yy = y + 1
+                    mm -= 12
+            else:
+                dd = day + i
+        else:
+            if day + i > 28:
+                dd = day + i - 28
+                mm = m + 1
+                if mm > 12:
+                    yy = y + 1
+                    mm -= 12  # 有问题闰年呢？
+            else:
+                dd = day + i
+        Time = '%d-%02d-%02d' % (yy, mm, dd)
+        values.append(Time)
+        i += 1
+    numberChose['values'] = tuple(values)
+    numberChose.current(0)  # 设置下拉列表默认显示的值，0为 numberChosen['values'] 的下标值
     numberChose.pack(side=LEFT)
 
-    Label(TRFrame, text='查询天数：', font=('宋体', (11)),padx=5).pack(side=LEFT)
+    Label(TRFrame, text='查询天数：', font=('宋体', (11)), bg='orange',padx=5).pack(side=LEFT)
     days = StringVar()
     daysEntry = Entry(TRFrame, textvariable=days, width=5).pack(side=LEFT)
     days.set('1')
-    Label(TRFrame,text=' ',font=("宋体",(11)),padx=5).pack(side=LEFT)
+    Label(TRFrame, text=' ', font=("宋体", (11)), padx=5).pack(side=LEFT)
 
-    search=Button(TRFrame,text='查询余票',width=10,command=lambda:GetStation(var_from,var_to,number,tree,all,d,k,g,t,z),bg='Cyan').pack(side=LEFT)
+    search = Button(TRFrame, text='查询余票', width=10,
+                    command=lambda: GetStation(var_from, var_to, number, tree, all, d, k, g, t, z), bg='Cyan').pack(side=LEFT)
 
     TLFrame.pack(side=LEFT)
     TLTFrame.pack(side=TOP)
     TLBFrame.pack(side=BOTTOM)
     TRFrame.pack(side=RIGHT)
-    TopFrame.pack(side=TOP,pady=5)
+    TopFrame.pack(side=TOP, pady=5)
 
     # 车型选择
     Label(TLBFrame, text='车次类型：', font=('宋体', (11))).pack(side=LEFT)
@@ -302,57 +310,55 @@ def CheckTicketswindow():
 
 
 def Loginwindow():
-    root=Tk()
+    root = Tk()
     root.geometry("300x400+500+500")
     root.title('登录窗口')
     root.config(bg='pink')
-    root.resizable(0,0)
+    root.resizable(0, 0)  # 窗口大小不可更改
 
+    # Label插件（三部实现Label)
+    L_little = Label(root, text='欢迎使用火车票查询系统')  # 内容
+    L_little.config(font='黑体 -25 bold', fg='blue', bg='yellow')  # 样式
+    L_little.place(x=150, y=50, anchor="center")  # 位置
+    L_author = Label(root, text='Version 1.0',)
+    L_author.config(font='TimesNewRoman -12 normal italic ', bg='pink', fg='green',)
+    L_author.place(x=300, y=390, anchor='e')
+    user_name = Label(root, text='用户名:')
+    user_name.config(font='黑体 -15 bold italic', bg='pink')
+    user_name.place(x=100, y=280, anchor='e')
+    passworld = Label(root, text='登录密码:')
+    passworld.config(font='黑体 -15 bold italic', bg='pink')
+    passworld.place(x=100, y=310, anchor='e')
 
-#Label插件
-    L_little=Label(root,text='欢迎使用火车票查询系统')#内容
-    L_little.config(font='黑体 -25 bold',fg='blue',bg='yellow')#样式
-    L_little.place(x=150,y=50,anchor="center")#位置
-    L_author=Label(root,text='Version1.0')
-    L_author.config(font='黑体 -10 bold',bg='pink',fg='green')
-    L_author.place(x=300,y=390,anchor='e')
-    user_name=Label(root,text='用户名:')
-    user_name.config(font='Verdana -15 bold',bg='pink')
-    user_name.place(x=100,y=280,anchor='e')
-    passworld=Label(root,text='登录密码:')
-    passworld.config(font='Verdana -15 bold',bg='pink')
-    passworld.place(x=100,y=310,anchor='e')
+    # text插件
+    user_name = StringVar()
+    user_text = Entry(root, width=20, textvariable=user_name)  # 输入框（把输入框中输入的值绑定到变量)
+    user_text.place(x=100, y=280, anchor='w')
+    password = StringVar()
+    pass_text = Entry(root, width=20, textvariable=password)
+    pass_text['show'] = '*'  # 用于输入密码
+    pass_text.place(x=100, y=310, anchor='w')
 
-#text插件
-    e=StringVar()
-    user_text=Entry(root,width=20)
-    user_text.place(x=100,y=280,anchor='w')
-    pass_text=Entry(root,width=20)
-    pass_text['show']='*'
-    pass_text.place(x=100,y=310,anchor='w')
+    # 添加button组件
+    B_0 = Button(root, text='登 录', command=lambda: Login(user_name, password, root))  # 传递参数必须使用lambda参数
+    B_0.config(font='TimesNewRoman -25 bold', fg='white', bg='orange', width=10)
+    B_0.place(x=150, y=375, anchor='center')
 
-
-#添加button组件
-    B_0=Button(root,text='登 录',command=lambda:Login(user_text,pass_text,root))#传递参数必须使用lambda参数
-    B_0.config(font='TimesNewRoman -25 bold',fg='white',bg='gold',width=10)
-    B_0.place(x=150,y=375,anchor='center')
-
-#插入图片
-    photo=PhotoImage(file=r'.\meixi.gif',width=168,height=150)
-    Imagelabel=Label(image=photo,bg='green')
-    Imagelabel.place(x=150,y=180,anchor='center')
+    # 插入图片
+    photo = PhotoImage(file=r'.\meixi.gif', width=168, height=150)
+    Imagelabel = Label(image=photo, bg='green')
+    Imagelabel.place(x=150, y=180, anchor='center')
     root.mainloop()
 
-def Login(user,pass_world,root):
-    if  user.get() == '' and pass_world.get() == '':
+
+def Login(user_name, password, root):
+    if user_name.get() == '' and password.get() == '':  # 判断用户名和密码是否正确
         root.destroy()
         CheckTicketswindow()
 
     else:
         messagebox.askokcancel('错误提示', '用户名或者密码错误请重新输入')
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     Loginwindow()
-
-
-
