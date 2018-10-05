@@ -11,6 +11,7 @@ class QuotesSpider(scrapy.Spider):  # 用户自定义的爬虫必须继承自bas
     def parse(self, response):  # 此方法主要用于解析服务器返回的网页获取我们所需要的内容
         tags = []
         soup = BeautifulSoup(response.text, 'lxml')
+        print(type(response.text))
         quotes = soup.find_all('div', attrs={'class': 'quote'})
         for quote in quotes:
             item = QuoteItem()
