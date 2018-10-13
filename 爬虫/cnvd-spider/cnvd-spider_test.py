@@ -77,6 +77,7 @@ def save(vuls):  # 保存一页共20漏洞信息以列表形式存储在文件�
     with open('cnvd-database2.txt', 'a', encoding='utf-8') as f:
         f.write(json.dumps(vuls, ensure_ascii=False)+'\n')
 
+
 if __name__ == '__main__':
     page = 1
     while page <= 88:
