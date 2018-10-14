@@ -5,5 +5,5 @@ os.chdir(path)
 f = open('results.txt', 'r')
 content = f.read()
 content = json.loads(content)
-print(len(content))
-print(len(content[-1]))
+for each in content:
+    print(len(each))

@@ -5,7 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/work.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subarray.py" beforeDir="false" afterPath="$PROJECT_DIR$/subarray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dianping/dianping.py" beforeDir="false" afterPath="$PROJECT_DIR$/dianping/dianping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dianping/error.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dianping/error.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dianping/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dianping/results.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/机器学习/SVD/svd-learn.py" beforeDir="false" afterPath="$PROJECT_DIR$/机器学习/SVD/svd-learn.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +39,51 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1105177863">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="88" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="88" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dianping/dianping.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-226">
+              <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+              <folding>
+                <element signature="e#136#739#0" />
+                <element signature="e#750#1705#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -56,11 +101,15 @@
         <option value="$PROJECT_DIR$/../p.py" />
         <option value="$PROJECT_DIR$/../pca.py" />
         <option value="$PROJECT_DIR$/subarray.py" />
+        <option value="$PROJECT_DIR$/机器学习/SVD/svd-learn.py" />
+        <option value="$PROJECT_DIR$/dianping/dianping.py" />
+        <option value="$PROJECT_DIR$/dianping/check_result.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="199" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="111" />
+    <option name="y" value="314" />
     <option name="width" value="960" />
     <option name="height" value="788" />
   </component>
@@ -74,7 +123,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/爬虫/Scrapy_leanrn/tutorial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -89,7 +138,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.subarray">
+  <component name="RunManager" selected="Python.check_result">
     <configuration default="true" type="ptest" factoryName="ptest">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -140,6 +189,48 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+    <configuration name="check_result" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dianping" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dianping/check_result.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dianping" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="work" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dianping" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dianping/dianping.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="pca" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,43 +273,39 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration default="false" name="ptests in 机器学习.PCA.pca" type="ptest" factoryName="ptest" temporary="true" nameIsGenerated="true">
+    <configuration name="svd-learn" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="work" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/机器学习/SVD" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="work" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="SUGGESTED_NAME" value="ptests in 机器学习.PCA.pca" />
-      <option name="ACTION_NAME" value="" />
-      <option name="RUN_TEST" value="true" />
-      <option name="TEST_TARGETS" value="机器学习.PCA.pca" />
-      <option name="RUN_FAILED" value="false" />
-      <option name="XUNIT_XML" value="" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <option name="USE_VARIABLES" value="false" />
-      <option name="VARIABLES" value="" />
-      <option name="VERBOSE" value="true" />
-      <option name="DISABLE_SCREENSHOT" value="false" />
-      <method />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/机器学习/SVD/svd-learn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.pca" />
       <item itemvalue="Python.subarray" />
+      <item itemvalue="Python.dianping" />
+      <item itemvalue="Python.svd-learn" />
+      <item itemvalue="Python.check_result" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.check_result" />
+        <item itemvalue="Python.svd-learn" />
+        <item itemvalue="Python.dianping" />
         <item itemvalue="Python.subarray" />
         <item itemvalue="Python.pca" />
       </list>
@@ -249,20 +336,21 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="111" y="314" width="960" height="788" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.003720238" />
-      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0032537961" />
+      <window_info id="Structure" order="1" weight="0.24960254" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.09016393" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.9969419" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3392857" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3591224" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.20819671" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -275,65 +363,17 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Anaconda/Lib/site-packages/skimage/io/collection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda/Lib/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="1427" column="38" selection-start-line="1427" selection-start-column="38" selection-end-line="1427" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda/Lib/site-packages/numpy/matrixlib/defmatrix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="178" selection-start-line="178" selection-end-line="179" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda/Lib/site-packages/skimage/io/collection.py" />
+    <entry file="file://D:/Anaconda/Lib/site-packages/numpy/core/fromnumeric.py" />
+    <entry file="file://D:/Anaconda/Lib/site-packages/numpy/matrixlib/defmatrix.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1310655275/math.py" />
-    <entry file="file://D:/Anaconda/Lib/site-packages/numpy/linalg/linalg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-124">
-          <caret line="210" selection-start-line="210" selection-end-line="210" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda/Lib/site-packages/PIL/Image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="2407" selection-start-line="2407" selection-end-line="2408" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda/Lib/site-packages/numpy/linalg/linalg.py" />
+    <entry file="file://D:/Anaconda/Lib/site-packages/PIL/Image.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1310655275/numpy/core/multiarray.py" />
-    <entry file="file://D:/Anaconda/Lib/site-packages/sklearn/decomposition/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="136" column="53" lean-forward="true" selection-start-line="136" selection-start-column="53" selection-end-line="136" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda/Lib/site-packages/sklearn/decomposition/base.py" />
     <entry file="file://$PROJECT_DIR$/../github机器学习库/Machine-Learning/8.PCA.py" />
-    <entry file="file://D:/Anaconda/Lib/site-packages/pylab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda/Lib/site-packages/sklearn/decomposition/pca.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="571" column="26" lean-forward="true" selection-start-line="571" selection-start-column="26" selection-end-line="571" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Anaconda/Lib/site-packages/pylab.py" />
+    <entry file="file://D:/Anaconda/Lib/site-packages/sklearn/decomposition/pca.py" />
     <entry file="file://$PROJECT_DIR$/../p.py" />
     <entry file="file://$PROJECT_DIR$/../pca.py" />
     <entry file="file://$PROJECT_DIR$/机器学习/PCA/pca.py">
@@ -347,9 +387,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="68" column="64" lean-forward="true" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dianping/check.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/机器学习/SVD/svd-learn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dianping/check_result.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dianping/dianping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-226">
+          <caret line="70" column="10" lean-forward="true" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
           <folding>
-            <element signature="e#48#70#0" />
-            <element signature="e#126#133#0" />
+            <element signature="e#136#739#0" />
+            <element signature="e#750#1705#0" />
           </folding>
         </state>
       </provider>

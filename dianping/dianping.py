@@ -68,7 +68,7 @@ if __name__ == '__main__':
     f.close()
     total_results = json.loads(total_results)
     base_url = 'http://www.dianping.com/shop/'
-    i = 22
+    i = 50
     trace = []
     try:
         while i <= 50:
