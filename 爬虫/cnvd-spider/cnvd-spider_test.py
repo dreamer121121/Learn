@@ -25,7 +25,7 @@ Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; 
 # 8: '厂商补丁', 9: '验证信息', 10: '报送时间', 11: '收录时间', 12: '更新时间', 13: '漏洞附件'}  # 需要的信息
 
 
-def get_page(page):
+def get_page(page):  # 获取一页的html
     header = random.choice(headers)
     vuls = []
     temp = []
@@ -55,7 +55,7 @@ def get_page(page):
 # 获取一个漏洞的具体信息
 def get_content(url):
     header = random.choice(headers)
-    vul = {}
+    vul = {}  # 保存在字典里
     html = requests.get(url, headers=header).text
     soup = BeautifulSoup(html, 'lxml')
     trs = soup.find('tbody').find_all('tr')
@@ -79,6 +79,7 @@ def save(vuls):  # 保存一页共20漏洞信息以列表形式存储在文件�
 
 
 if __name__ == '__main__':
+    base_url = 'http://ics.cnvd.org.cn/?max=20'
     page = 1
     while page <= 88:
         try:

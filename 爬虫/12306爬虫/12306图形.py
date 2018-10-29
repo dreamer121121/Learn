@@ -345,7 +345,7 @@ def Loginwindow():
     B_0.place(x=150, y=375, anchor='center')
 
     # 插入图片
-    photo = PhotoImage(file=r'.\meixi.gif', width=168, height=150)
+    photo = PhotoImage(file=r'.\meixi.gif', width=168, height=150)  # 读取图片
     Imagelabel = Label(image=photo, bg='green')
     Imagelabel.place(x=150, y=180, anchor='center')
     root.mainloop()

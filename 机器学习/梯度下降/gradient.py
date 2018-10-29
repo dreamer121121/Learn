@@ -29,30 +29,30 @@ def gradient_x(x,y):
 
 def gradient_y(x,y):
     
-    return 200*(y-x**2) 
+    return 200*(y-x**2)
 
 
-def gradient(iteras_max=10000,min_loss=0.001):
-    loss=10
-    iteras=1
-    result=[]
-    x=0
-    y=0
-    error=[0,0]
-    stepsize=0.001
-    while iteras<iteras_max and loss>min_loss:
-        error[0]=gradient_x(x,y)
-        error[1]=gradient_y(x,y)
-        #更新x和y
-        x-=error[0]*stepsize
-        y-=error[1]*stepsize
-        #计算损失
-        loss=cal_loss(x,y)
+def gradient(iteras_max=10000, min_loss=0.001):
+    loss = 10
+    iteras = 1
+    result = []
+    x = 0
+    y = 0  # 从0,0点出发
+    error = [0, 0]
+    stepsize = 0.001
+    while iteras < iteras_max and loss > min_loss:
+        error[0] = gradient_x(x, y)
+        error[1] = gradient_y(x, y)
+        # 更新x和y
+        x -= error[0] * stepsize
+        y -= error[1] * stepsize
+        # 计算损失
+        loss = cal_loss(x, y)
     result.append(x)
     result.append(y)
-    return result,loss
-        
-if __name__ =='__main__':
-    w,loss=gradient()
-    print(w,loss)
-    
+    return result, loss
+
+
+if __name__ == '__main__':
+    w, loss = gradient()
+    print(w, loss)
