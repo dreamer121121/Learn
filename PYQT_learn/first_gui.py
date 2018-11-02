@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow,QFileDialog
 class Ui_widget(object):
     def setupUi(self, widget):
+        self.widget = widget
         widget.setObjectName("widget")
         widget.resize(692, 449)
         self.lineEdit = QtWidgets.QLineEdit(widget)
@@ -138,10 +139,9 @@ class Ui_widget(object):
         self.pushButton_6.setText(_translate("widget", "识别图片"))
 
     def open_file_directory(self):
-        file_path = QFileDialog.getExistingDirectory(self, caption="选取文件夹",
-        directory=r'C:\Users\outao\Desktop\PYQT_learn')  # 起始路径
-        # self.lineEdit.setText(file_path)
-        print(file_path)
+        file_path = QFileDialog.getOpenFileName(self.widget, "选取\
+文件夹", r'C:\Users\dreamer\Desktop\ARGUS\PYQT_learn\样例文件')# 起始路径
+        self.lineEdit.setText(str(file_path[0]))
 
 
 if __name__ == '__main__':
