@@ -409,8 +409,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>recognition()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>215</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>open_file_directory()</slot>
+  <slot>recognition()</slot>
  </slots>
 </ui>
