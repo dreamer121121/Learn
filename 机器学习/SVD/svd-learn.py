@@ -2,22 +2,30 @@ import numpy as np
 # coding=utf-8
 from numpy import *
 from numpy import linalg as la
+from bd_homework import test
 
 '''加载测试数据集'''
 
 
-def loadExData():
-    return mat([[0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 5],
-                [0, 0, 0, 3, 0, 4, 0, 0, 0, 0, 3],
-                [0, 0, 0, 0, 4, 0, 0, 1, 0, 4, 0],
-                [3, 3, 4, 0, 0, 0, 0, 2, 2, 0, 0],
-                [5, 4, 5, 0, 0, 0, 0, 5, 5, 0, 0],
-                [0, 0, 0, 0, 5, 0, 1, 0, 0, 5, 0],
-                [4, 3, 4, 0, 0, 0, 0, 5, 5, 0, 1],
-                [0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 4],
-                [0, 0, 0, 2, 0, 2, 5, 0, 0, 1, 2],
-                [0, 0, 0, 0, 5, 0, 0, 0, 0, 4, 0],
-                [1, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0]])
+# def loadExData(test):
+#     return mat([[0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 5],
+#                 [0, 0, 0, 3, 0, 4, 0, 0, 0, 0, 3],
+#                 [0, 0, 0, 0, 4, 0, 0, 1, 0, 4, 0],
+#                 [3, 3, 4, 0, 0, 0, 0, 2, 2, 0, 0],
+#                 [5, 4, 5, 0, 0, 0, 0, 5, 5, 0, 0],
+#                 [0, 0, 0, 0, 5, 0, 1, 0, 0, 5, 0],
+#                 [4, 3, 4, 0, 0, 0, 0, 5, 5, 0, 1],
+#                 [0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 4],
+#                 [0, 0, 0, 2, 0, 2, 5, 0, 0, 1, 2],
+#                 [0, 0, 0, 0, 5, 0, 0, 0, 0, 4, 0],
+#                 [1, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0]])
+
+
+def loadExData(test):
+    return mat(test)
+
+
+
 
 
 '''以下是三种计算相似度的算法，分别是欧式距离、皮尔逊相关系数和余弦相似度,
@@ -53,6 +61,7 @@ def sigmaPct(sigma, percentage):
         sumsgm3 += i ** 2
         k += 1
         if sumsgm3 >= sumsgm2 * percentage:
+            print("K=%d"%d)
             return k
 
 
@@ -92,6 +101,7 @@ def recommend(dataMat, user, N=5, simMeas=cosSim, estMethod=svdEst, percentage=0
     if len(unratedItems) == 0: return 'you rated everything'  # 如果都已经评过分，则退出
     itemScores = []
     for item in unratedItems:  # 对于每个未评分的item，都计算其预测评分
+        print("未评分项目：%s"%item)
         estimatedScore = estMethod(dataMat, user, simMeas, item, percentage)
         itemScores.append((item, estimatedScore))
     itemScores = sorted(itemScores, key=lambda x: x[1], reverse=True)  # 按照item的得分进行从大到小排序
@@ -99,6 +109,8 @@ def recommend(dataMat, user, N=5, simMeas=cosSim, estMethod=svdEst, percentage=0
 
 
 if __name__ == '__main__':
-    testdata = loadExData()  # 导入数据
-    results = recommend(testdata, 1, N=3, percentage=0.8)  # 对编号为1的用户推荐评分较高的3件商品
+    print("--------评分矩阵为：----------")
+    print(test)
+    testdata = loadExData(test)  # 导入数据
+    results = recommend(testdata, 1, N=3, percentage=0.9)  # 对编号为1的用户推荐评分较高的3件商品
     print(results)
