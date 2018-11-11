@@ -1,1 +1,0 @@
-This is the code repository for ics_scanning_project created by ElendirChen at 20170418

@@ -1,3 +1,0 @@
-Port		FileNumber		Total
-
-ALL_IP_NUM is : 0
