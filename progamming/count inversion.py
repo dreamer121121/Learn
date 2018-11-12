@@ -17,15 +17,16 @@ total = 0
 
 def count(ll, rl):
     result = []
-    r = ll + rl
     count = 0
     while len(ll) > 0 and len(rl) > 0:
         if ll[0] > rl[0]:
-            count += 1
+            count += len(ll)
             result.append(rl.pop(0))
         else:
             result.append(ll.pop(0))
-    return count, r
+    result += ll
+    result += rl
+    return count, result
 
 
 def counting_inversion(A):
