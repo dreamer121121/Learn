@@ -77,7 +77,7 @@ class Ui_Form(object):
 
 
     def open_file(self):
-        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\jack xia\Desktop\Demo\测试图像")
+        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\Tao xia\Desktop\Demo\测试图像")
         img = QImage()
         img.load(file_path)  # 载入图片
         self.img = img.scaled(self.graphicsView.width(), self.graphicsView.height())
@@ -88,7 +88,21 @@ class Ui_Form(object):
         with open(file_path, 'rb') as f:
             image = f.read()
             self.textBrowser.clear()
+
+        options={}
+        options['baike_num']=5
+        baike_info=client.advancedGeneral(image, options)['result'][0]
+        print(baike_info)
+
+        if not baike_info['baike_info']:
+            baike_info=baike_info['keyword']
+        else:
+            baike_info=baike_info['description']
+
+        self.textBrowser_2.clear()
+        self.textBrowser_2.append(baike_info)
         self.image = image
+
 
     def rec_cai(self):  # 调用百度API
         self.textBrowser.clear()
@@ -119,10 +133,11 @@ class Ui_Form(object):
     def logo_rec(self):
         self.textBrowser.clear()
         result = client.logoSearch(self.image)['result']
+        print(result)
         display = ''
         for r in result:
             display += '商标：' + r['name'] + '\n'
-            display += '置信度：' + str(r['probablity']) + '\n'
+            display += '置信度：' + str(r['probability']) + '\n'
             display += '\n'
         self.textBrowser.append(display)
 
