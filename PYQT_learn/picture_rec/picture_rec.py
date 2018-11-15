@@ -7,10 +7,13 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
+import cv2 as cv
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from aip import AipImageClassify
+
 
 
 APP_ID = '14757979'
@@ -57,6 +60,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.open_file)
+        # self.pushButton.clicked.connect(self.drawLines)
         self.pushButton_2.clicked.connect(self.rec_cai)
         self.pushButton_3.clicked.connect(self.car_rec)
         self.pushButton_4.clicked.connect(self.logo_rec)
@@ -78,31 +82,41 @@ class Ui_Form(object):
 
     def open_file(self):
         file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\Tao xia\Desktop\Demo\测试图像")
+        print(file_path)
         img = QImage()
         img.load(file_path)  # 载入图片
+        self.img=img
         self.img = img.scaled(self.graphicsView.width(), self.graphicsView.height())
         self.graphicsView.scene = QGraphicsScene()  # 创建一个图片元素的对象
         self.graphicsView.scene.addPixmap(QPixmap().fromImage(self.img))  # 将加载后的图片传递给scene对象
         self.graphicsView.setScene(self.graphicsView.scene)
-        # 打开图片文件
+
+        #打开图片文件
         with open(file_path, 'rb') as f:
             image = f.read()
             self.textBrowser.clear()
 
+        self.image = image
+
+
         options={}
         options['baike_num']=5
-        baike_info=client.advancedGeneral(image, options)['result'][0]
+        baike_info=client.advancedGeneral(self.image, options)['result'][0]  # 通用物体识别
         print(baike_info)
 
         if not baike_info['baike_info']:
             baike_info=baike_info['keyword']
         else:
-            baike_info=baike_info['description']
+            baike_info=baike_info['baike_info']['description']
 
         self.textBrowser_2.clear()
         self.textBrowser_2.append(baike_info)
-        self.image = image
 
+
+        coordinate=client.objectDetect(self.image)['result']#主体检测
+        print(coordinate)
+        demo = Drawing(self.graphicsView)
+        demo.show()
 
     def rec_cai(self):  # 调用百度API
         self.textBrowser.clear()
@@ -162,6 +176,29 @@ class Ui_Form(object):
         self.textBrowser.append(display)
 
 
+
+class Drawing(QWidget):
+    def __init__(self,parent=None):#parent定义的是在哪个父级控件上绘制矩形
+        super(Drawing, self).__init__(parent)#尚未搞清
+        # self.left, self.top, self.width, self.height = coordinate['left'], coordinate['top'], coordinate['width'],coordinate['height']
+        self.setWindowTitle('在窗口绘制文字')
+        self.resize(300, 200)
+        self.text = '欢迎学习 PyQt5'
+    def paintEvent(self,event):
+        painter=QPainter()
+        painter.begin(self) #自定义绘制方法
+        self.draw(event,painter)
+        painter.end()
+    def draw(self,event,qp): #设置画笔的颜色
+        qp.setPen(QColor(168,34,3)) #设置字体
+        qp.setFont(QFont('SimSun',20)) #绘制文字
+        qp.drawRect(22,4,958,663)
+
+        #self.left, self.top, self.width, self.height
+
+
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     widget = QtWidgets.QWidget()
@@ -169,3 +206,6 @@ if __name__ == "__main__":
     ui.setupUi(widget)
     widget.show()
     sys.exit(app.exec_())
+
+
+
