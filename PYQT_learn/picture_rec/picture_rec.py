@@ -13,6 +13,8 @@ from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from aip import AipImageClassify
+import numpy as np
+import os
 
 
 
@@ -60,7 +62,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.pushButton.clicked.connect(self.open_file)
-        # self.pushButton.clicked.connect(self.drawLines)
+        # self.pushButton.clicked.connect(self.paintEvent)
         self.pushButton_2.clicked.connect(self.rec_cai)
         self.pushButton_3.clicked.connect(self.car_rec)
         self.pushButton_4.clicked.connect(self.logo_rec)
@@ -81,7 +83,8 @@ class Ui_Form(object):
 
 
     def open_file(self):
-        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\Tao xia\Desktop\Demo\测试图像")
+        self.demo.close()
+        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\Tao xia\Desktop\Demo\test")
         print(file_path)
         img = QImage()
         img.load(file_path)  # 载入图片
@@ -95,6 +98,15 @@ class Ui_Form(object):
         with open(file_path, 'rb') as f:
             image = f.read()
             self.textBrowser.clear()
+
+
+        # print((self.graphicsView.width(),self.graphicsView.height()))
+        # img=cv.imread(file_path)
+        # x=img.shape[0]
+        # y=img.shape[1]
+        # print(x,y)
+        # scale_x=self.graphicsView.width()/x
+        # scale_y=self.graphicsView.height()/y
 
         self.image = image
 
@@ -115,8 +127,11 @@ class Ui_Form(object):
 
         coordinate=client.objectDetect(self.image)['result']#主体检测
         print(coordinate)
-        demo = Drawing(self.graphicsView)
-        demo.show()
+
+
+        self.demo = Drawing(self.graphicsView,coordinate)
+        self.demo.show()
+
 
     def rec_cai(self):  # 调用百度API
         self.textBrowser.clear()
@@ -175,15 +190,31 @@ class Ui_Form(object):
             display += '\n'
         self.textBrowser.append(display)
 
+    # def paintEvent(self,event):
+    #     painter = QPainter()
+    #     painter.setPen(QColor(166, 66, 250))
+    #     painter.begin(self.Form)
+    #     self.drawRect(event,painter) # 绘制函数
+    #     painter.end()
+    #
+    # def drawRect(self,event,qp): #设置画笔的颜色
+    #     qp.setPen(QColor(168,34,3)) #设置字体
+    #     qp.setFont(QFont('SimSun',20)) #绘制文字
+    #     qp.drawRect(22,4,958,663)
 
 
 class Drawing(QWidget):
-    def __init__(self,parent=None):#parent定义的是在哪个父级控件上绘制矩形
+
+    def __init__(self,parent,coordinate):#parent定义的是在哪个父级控件上绘制矩形
         super(Drawing, self).__init__(parent)#尚未搞清
-        # self.left, self.top, self.width, self.height = coordinate['left'], coordinate['top'], coordinate['width'],coordinate['height']
+        self.left, self.top, self.width, self.height = coordinate['left'], coordinate['top'], coordinate['width'],coordinate['height']
+        # self.width=self.width*scale_x
+        # self.height =self.height*scale_y
         self.setWindowTitle('在窗口绘制文字')
-        self.resize(300, 200)
+        self.resize(1000, 1000)
         self.text = '欢迎学习 PyQt5'
+
+
     def paintEvent(self,event):
         painter=QPainter()
         painter.begin(self) #自定义绘制方法
@@ -192,7 +223,7 @@ class Drawing(QWidget):
     def draw(self,event,qp): #设置画笔的颜色
         qp.setPen(QColor(168,34,3)) #设置字体
         qp.setFont(QFont('SimSun',20)) #绘制文字
-        qp.drawRect(22,4,958,663)
+        qp.drawRect(self.left, self.top,self.width,self.height )
 
         #self.left, self.top, self.width, self.height
 
@@ -200,6 +231,12 @@ class Drawing(QWidget):
 
 
 if __name__ == "__main__":
+    Files=os.listdir(r'C:\Users\Tao xia\Desktop\Demo\test')
+    os.chdir(r'C:\Users\Tao xia\Desktop\Demo\test')
+    for file in Files:
+        img=cv.imread(file)
+        img2=cv.resize(img,(451,471))
+        cv.imwrite(file,img2)
     app = QtWidgets.QApplication(sys.argv)
     widget = QtWidgets.QWidget()
     ui = Ui_Form()
