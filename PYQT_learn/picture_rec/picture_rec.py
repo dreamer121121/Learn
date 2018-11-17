@@ -7,7 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
-import cv2 as cv
+import time
+# import cv2 as cv
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtGui import *
@@ -26,6 +27,9 @@ client = AipImageClassify(APP_ID, API_KEY, SECRET_KEY)
 
 class Ui_Form(object):
     def setupUi(self, Form):
+        self.options = {}
+        self.count=0
+        self.index = 0
         self.Form = Form
         Form.setObjectName("Form")
         Form.resize(775, 547)
@@ -68,6 +72,7 @@ class Ui_Form(object):
         self.pushButton_4.clicked.connect(self.logo_rec)
         self.pushButton_5.clicked.connect(self.animal_rec)
         self.pushButton_6.clicked.connect(self.plant)
+        self.checkBox.stateChanged.connect(self.changebox)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -83,8 +88,9 @@ class Ui_Form(object):
 
 
     def open_file(self):
-        self.demo.close()
-        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\Tao xia\Desktop\Demo\test")
+        self.graphicsView.update()
+        QApplication.processEvents()
+        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\dreamer\Desktop\Demo\test")
         print(file_path)
         img = QImage()
         img.load(file_path)  # 载入图片
@@ -124,12 +130,14 @@ class Ui_Form(object):
         self.textBrowser_2.clear()
         self.textBrowser_2.append(baike_info)
 
-
-        coordinate=client.objectDetect(self.image)['result']#主体检测
+        coordinate = client.objectDetect(self.image, self.options)['result']  # 主体检测
         print(coordinate)
 
-
-        self.demo = Drawing(self.graphicsView,coordinate)
+        if self.count == 1:
+            self.demo.close()
+            self.count -= 1
+        self.demo = Drawing(self.graphicsView, coordinate)
+        self.count += 1
         self.demo.show()
 
 
@@ -190,6 +198,14 @@ class Ui_Form(object):
             display += '\n'
         self.textBrowser.append(display)
 
+    def changebox(self):
+        if self.index == 0:
+            self.options['with_face'] = 1
+            self.index += 1
+        else:
+            self.options['with_face'] = 0
+            self.index -= 1
+        self.open_file()
     # def paintEvent(self,event):
     #     painter = QPainter()
     #     painter.setPen(QColor(166, 66, 250))
@@ -203,46 +219,39 @@ class Ui_Form(object):
     #     qp.drawRect(22,4,958,663)
 
 
-class Drawing(QWidget):
+class Drawing(QLabel):
 
-    def __init__(self,parent,coordinate):#parent定义的是在哪个父级控件上绘制矩形
-        super(Drawing, self).__init__(parent)#尚未搞清
+    def __init__(self, parent, coordinate):  # parent定义的是在哪个父级控件上绘制矩形
+        super(Drawing, self).__init__(parent)  # 尚未搞清
         self.left, self.top, self.width, self.height = coordinate['left'], coordinate['top'], coordinate['width'],coordinate['height']
         # self.width=self.width*scale_x
         # self.height =self.height*scale_y
-        self.setWindowTitle('在窗口绘制文字')
         self.resize(1000, 1000)
-        self.text = '欢迎学习 PyQt5'
 
-
-    def paintEvent(self,event):
-        painter=QPainter()
-        painter.begin(self) #自定义绘制方法
-        self.draw(event,painter)
+    def paintEvent(self, event):
+        painter = QPainter()
+        painter.begin(self)  # 自定义绘制方法
+        self.draw(event, painter)
         painter.end()
-    def draw(self,event,qp): #设置画笔的颜色
-        qp.setPen(QColor(168,34,3)) #设置字体
-        qp.setFont(QFont('SimSun',20)) #绘制文字
-        qp.drawRect(self.left, self.top,self.width,self.height )
 
-        #self.left, self.top, self.width, self.height
+    def draw(self, event, qp):  # 设置画笔的颜色
+        qp.setPen(QColor(168, 34, 3))  # 设置字体
+        qp.setFont(QFont('SimSun', 20))  # 绘制文字
+        qp.drawRect(self.left, self.top, self.width, self.height)
 
-
+        # self.left, self.top, self.width, self.height
 
 
 if __name__ == "__main__":
-    Files=os.listdir(r'C:\Users\Tao xia\Desktop\Demo\test')
+    Files = os.listdir(r'C:\Users\Tao xia\Desktop\Demo\test')
     os.chdir(r'C:\Users\Tao xia\Desktop\Demo\test')
     for file in Files:
-        img=cv.imread(file)
-        img2=cv.resize(img,(451,471))
-        cv.imwrite(file,img2)
+        img = cv.imread(file)
+        img2 = cv.resize(img, (451, 471))
+        cv.imwrite(file, img2)
     app = QtWidgets.QApplication(sys.argv)
     widget = QtWidgets.QWidget()
     ui = Ui_Form()
     ui.setupUi(widget)
     widget.show()
     sys.exit(app.exec_())
-
-
-
