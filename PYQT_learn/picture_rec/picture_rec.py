@@ -90,7 +90,7 @@ class Ui_Form(object):
     def open_file(self):
         self.graphicsView.update()
         QApplication.processEvents()
-        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r"C:\Users\dreamer\Desktop\Demo\test")
+        file_path, _ = QFileDialog.getOpenFileName(self.Form, "选择图片", r".\Demo\test")
         print(file_path)
         img = QImage()
         img.load(file_path)  # 载入图片
@@ -200,10 +200,10 @@ class Ui_Form(object):
 
     def changebox(self):
         if self.index == 0:
-            self.options['with_face'] = 1
+            self.options['with_face'] = 0
             self.index += 1
         else:
-            self.options['with_face'] = 0
+            self.options['with_face'] = 1
             self.index -= 1
         self.open_file()
     # def paintEvent(self,event):
@@ -243,12 +243,12 @@ class Drawing(QLabel):
 
 
 if __name__ == "__main__":
-    Files = os.listdir(r'C:\Users\Tao xia\Desktop\Demo\test')
-    os.chdir(r'C:\Users\Tao xia\Desktop\Demo\test')
-    for file in Files:
-        img = cv.imread(file)
-        img2 = cv.resize(img, (451, 471))
-        cv.imwrite(file, img2)
+    # Files = os.listdir(r'C:\Users\Tao xia\Desktop\Demo\test')
+    # os.chdir(r'C:\Users\Tao xia\Desktop\Demo\test')
+    # for file in Files:
+    #     img = cv.imread(file)
+    #     img2 = cv.resize(img, (451, 471))
+    #     cv.imwrite(file, img2)
     app = QtWidgets.QApplication(sys.argv)
     widget = QtWidgets.QWidget()
     ui = Ui_Form()
