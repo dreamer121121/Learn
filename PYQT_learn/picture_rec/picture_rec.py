@@ -9,8 +9,6 @@
 import sys
 import time
 # import cv2 as cv
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from aip import AipImageClassify
