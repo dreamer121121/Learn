@@ -1,14 +1,19 @@
+A = [16, 9, 21, 13, 4, 11, 3]
+heap_size = len(A)
+
+
 def Max_heapify(A, i):
     left = 2 * i + 1
-    right = 2*i +2
-    if left < len(A) and A[left] > A[i]:
+    right = 2 * i + 2
+    global heap_size
+    if left < heap_size and A[left] > A[i]:
         largest = left
     else:
-        largest = right
-    if right < len(A) and A[right] > A[i]:
-        largest = right
-    else:
         largest = i
+
+    if right < heap_size and A[right] > A[largest]:
+        largest = right
+
     if i != largest:
         A[largest], A[i] = A[i], A[largest]
         Max_heapify(A, largest)
@@ -18,9 +23,19 @@ def build_max_heap(A):
     mid = len(A) // 2 - 1
     for i in range(mid, -1, -1):
         Max_heapify(A, i)
-    print(A)
+
+
+def heap_sort(A):
+    build_max_heap(A)  # 构建大顶堆
+    print("初始大顶堆A：", A)
+    for i in range(len(A) - 1, 0, -1):
+        A[i], A[0] = A[0], A[i]
+        global heap_size
+        heap_size -= 1
+        Max_heapify(A, 0)
 
 
 if __name__ == '__main__':
-    A = [16, 9, 21, 13, 4, 11, 3]
-    build_max_heap(A)
+    heap_sort(A)
+    print("原始A：", A)
+    print("排序后的A：", A)
