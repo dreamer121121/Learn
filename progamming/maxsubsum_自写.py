@@ -26,8 +26,8 @@ def max_crossing_sum(a, left, center, right):
 
 
 def maxsubsum(a, left, right):
-    trace=[]
-    if left == right:
+    trace = []
+    if left == right:  # 递归边界
         return a[left]
     center = (left + right) // 2
     maxleftsum = maxsubsum(a, left, center)
@@ -40,7 +40,8 @@ def maxsubsum(a, left, right):
 
 if __name__ == "__main__":
     a = [1, -9, 6, 7, -2, 5, 6, -3]
-    result= maxsubsum(a, 0, len(a) - 1)
+    # a = [-1, -2, -3]
+    result = maxsubsum(a, 0, len(a) - 1)
     print(result)
 
 
