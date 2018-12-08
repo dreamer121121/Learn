@@ -2,9 +2,9 @@ A = [16, 9, 21, 13, 4, 11, 3]
 heap_size = len(A)
 
 
-def Max_heapify(A, i):
-    left = 2 * i + 1
-    right = 2 * i + 2
+def Max_heapify(A, i):  # 维护大顶堆O(logn)
+    left = 2 * i + 1  # 左孩子节点位置
+    right = 2 * i + 2  # 右孩子节点位置
     global heap_size
     if left < heap_size and A[left] > A[i]:
         largest = left
