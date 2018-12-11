@@ -1,3 +1,5 @@
+from stack import Stack
+
 # 构建一张图
 graph = dict()
 graph['1'] = ['2', '3']
@@ -7,17 +9,14 @@ graph['4'] = []
 graph['5'] = []
 graph['6'] = []
 graph['7'] = []
-searchd_node = []  # 记录遍历节点的顺序
+searchd_node = Stack()  # 记录遍历节点的顺序
 
 
 def dfsvisit(u):
-    if u not in searchd_node:
-        searchd_node.append(u)
-        # if graph[u]:  # 判断u节点是否有子节点
+    if u not in searchd_node.stack:
         for v in graph[u]:
-            if v not in searchd_node:
-                searchd_node.append(v)
             dfsvisit(v)
+        searchd_node.push(u)  # 压栈注意压栈的时间必须在u节点的所有节点均被访问到后u节点才能压栈
 
 
 def dfs(graph):
@@ -27,4 +26,4 @@ def dfs(graph):
 
 if __name__ == '__main__':
     dfs(graph)
-    print(searchd_node)
+    print(searchd_node.stack)
