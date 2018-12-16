@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-#绘图部分
+
+# 绘图部分
 r'''
 def fun(x,y):
     z=(1-x)**2+100*(y-x**2)**2
@@ -18,18 +19,19 @@ plt.ylim(-0.5,2)
 plt.xlabel('x')
 plt.ylabel('y')
 '''
-def cal_loss(x,y):
+
+
+def cal_loss(x, y):
     
     return (1-x)**2+100*(y-x**2)**2
 
 
-def gradient_x(x,y):
-    
-    return -2+2*x-400*(y-x**2)*x
+def gradient_x(x, y):
+    return -2 + 2 * x - 400 * (y - x ** 2) * x
 
-def gradient_y(x,y):
-    
-    return 200*(y-x**2)
+
+def gradient_y(x, y):
+    return 200 * (y - x ** 2)
 
 
 def gradient(iteras_max=10000, min_loss=0.001):
