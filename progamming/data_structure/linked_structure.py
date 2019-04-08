@@ -148,6 +148,74 @@ class Llist:
 # for i in range(11,20):
 #     mylist1.append(i)
 
+class Llist1(Llist):
+    """
+    链表的改进
+    """
+    def __init__(self):
+        Llist.__init__(self)
+        self._rear = None # 尾节点引用域
+
+    def prepend(self,elem):
+        self._head = LNode(elem,self._head)
+        if self._rear is None:
+            self._rear = self._head
+
+    def append(self,elem):
+        if self._head is None:
+            self._head = LNode(elem)
+            self._rear = self._head
+        else:
+            self._rear.next = LNode(elem)
+            self._rear = self._rear.next
+
+    def pop_last(self):
+        if self._head is None:
+            raise LinkedListUnderflow("in pop_last")
+        p = self._head
+        while p.next.next is not None:
+            p = p.next
+        e = p.next.elem
+        p.next = None
+        self._rear = p
+        return e
+
+
+class LClist:
+    def __init__(self):
+        self._rear = None
+
+    def is_empty(self):
+        return self._rear is None
+
+    def prepend(self,elem):
+        p = LNode(elem)
+        if self._rear is None:
+            p.next = p #构建一个节点的循环链表
+            self._rear = p
+        else:
+            p.next = self._rear.next
+            self._rear.next = p
+
+    def append(self,elem):
+        self.prepend(elem)
+        self._rear = self._rear.next
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
