@@ -27,15 +27,18 @@
 # t1 = BinTree(2,BinTree(5),BinTree(4))
 # set_left(left(t1),BinTree(5))
 
+
+#定义二叉树类
 class BinTNode:
     def __init__(self,val,left = None,right=None):
         self.val = val
         self.left = left
         self.right = right
 
-root = BinTNode(1,BinTNode(2),BinTNode(3))
+root = BinTNode(1,BinTNode(2,BinTNode(4),BinTNode(5)),BinTNode(3,BinTNode(6),BinTNode(7)))
 
 
+#二叉树的递归遍历
 def pre(root):
     """
     前序遍历二叉树
@@ -47,6 +50,50 @@ def pre(root):
     print("Node："+str(root.val))
     pre(root.left)
     pre(root.right)
+
+def pos(root):
+    """
+    二叉树的后序遍历
+    :param root:
+    :return:
+    """
+    if root is None:
+        return False
+    pos(root.left)
+    pos(root.right)
+    print(root.val)
+
+def mid(root):
+    """
+    二叉树的中序遍历
+    :param root:
+    :return:
+    """
+    if root is None:
+        return False
+    mid(root.left)
+    print(root.val)
+    mid(root.right)
+
+def row_order(tree):
+    # print(tree._data)
+    """
+    二叉树的层次遍历
+    :param tree:
+    :return:
+    """
+    queue = []
+    queue.append(tree)
+    while True:
+        if queue==[]:
+            break
+        print(queue[0]._data)
+        first_tree = queue[0]
+        if first_tree._left != None:
+            queue.append(first_tree._left)
+        if first_tree._right != None:
+            queue.append(first_tree._right)
+        queue.remove(first_tree)
 
 def count_BinTNodes(root):
     """
@@ -69,4 +116,8 @@ def sum_BinTNodes(root):
         return 0
     else:
         return root.val + sum_BinTNodes(root.left)+sum_BinTNodes(root.right)
+
+pos(root)
+
+
 
