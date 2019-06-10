@@ -7,7 +7,7 @@ def quick_sort(array, l, r):
 
 def partition(array, l, r):
     pivot = array[r]
-    low = -1
+    low = l-1
     for i in range(l, r):
         if array[i] < pivot:
             low += 1  # 保证low以前的数字都小于pivot值
