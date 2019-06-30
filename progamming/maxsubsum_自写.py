@@ -37,10 +37,8 @@ def maxsubsum(a, left, right):
     trace.append((i, j))
     return result
 
-
 if __name__ == "__main__":
-    a = [1, -9, 6, 7, -2, 5, 6, -3]
-    # a = [-1, -2, -3]
+    a = [6,-3,-2,7,-15,1,2,2]
     result = maxsubsum(a, 0, len(a) - 1)
     print(result)
 
