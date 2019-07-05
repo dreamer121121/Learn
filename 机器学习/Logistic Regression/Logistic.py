@@ -1,46 +1,85 @@
 from numpy import *
-from math import *
-import numpy as np
+# from math import * #尚不明白为何引入math库会引发错误
 
-def load_dataset():
-    datamat = [];labelmat = []
-    with open ("testSet.txt",'r') as f:
-        content = f.readlines()
-    for line in content:
-        instance = line.strip().split()
-        datamat.append([1,float(instance[0]),float(instance[1])])
-        labelmat.append(int(instance[2]))
-    return datamat,labelmat
+# def load_dataset():
+#     # datamat = [];labelmat = []
+#     # with open ("testSet.txt",'r') as f:
+#     #     content = f.readlines()
+#     # for line in content:
+#     #     instance = line.strip().split()
+#     #     datamat.append([1.0,float(instance[0]),float(instance[1])])
+#     #     labelmat.append(int(instance[2]))
+#     # return datamat,labelmat
+#     dataMat = []; labelMat = []
+#     fr = open('testSet.txt')
+#     for line in fr.readlines():
+#         lineArr = line.strip().split()
+#         dataMat.append([1.0, float(lineArr[0]), float(lineArr[1])])
+#         labelMat.append(int(lineArr[2]))
+#     return dataMat,labelMat
+#
+#
+# def sigmoid(inX):
+#     print("--inx--",type(inX))
+#     return 1.0/(1+exp(-inX))
+#
+# def gradAscent(dataMatIn,classLabels):
+#     # dataMatrix = mat(dataMatIn)
+#     # labelMat = mat(classLables).transpose()#转置矩阵
+#     # m,n = shape(dataMatrix)
+#     # alpha = 0.001  #学习速率
+#     # maxCycles = 500 #迭代次数
+#     # weights = ones((n,1))#初始化权重矩阵
+#     # #开始迭代上升
+#     # for i in range(maxCycles):
+#     #     h = sigmoid(dataMatrix * weights)
+#     #     error = labelMat - h
+#     #     weights += alpha * (dataMatrix * error)
+#     # return weights
+#     dataMatrix = mat(dataMatIn)             #convert to NumPy matrix
+#     labelMat = mat(classLabels).transpose() #convert to NumPy matrix
+#     m,n = shape(dataMatrix)
+#     alpha = 0.001
+#     maxCycles = 500
+#     weights = ones((n,1))
+#     for k in range(maxCycles):              #heavy on matrix operations
+#         print("第"+str(k)+"次迭代")
+#         h = sigmoid(dataMatrix*weights)     #matrix mult
+#         error = (labelMat - h)              #vector subtraction
+#         weights = weights + alpha * dataMatrix.transpose()* error #matrix mult
+#     return weights
 
-def sigmoid(inx):
-    inx = inx.tolist()
-    p = array([1.0/(1+exp(-z[0])) for z in inx])
-    return p
 
-def gradAscent(dataMatIn,classLables):
-    dataMatrix = array(dataMatIn,dtype=float)
-    labelMat = array(classLables).transpose() #转置矩阵
+
+def loadDataSet():
+    dataMat = []; labelMat = []
+    fr = open('testSet.txt')
+    for line in fr.readlines():
+        lineArr = line.strip().split()
+        dataMat.append([1.0, float(lineArr[0]), float(lineArr[1])])
+        labelMat.append(int(lineArr[2]))
+    return dataMat,labelMat
+
+def sigmoid(inX):
+    return 1.0/(1+exp(-inX))
+
+def gradAscent(dataMatIn, classLabels):
+    dataMatrix = mat(dataMatIn)             #convert to NumPy matrix
+    labelMat = mat(classLabels).transpose() #convert to NumPy matrix
     m,n = shape(dataMatrix)
-    alpha = 0.1  #学习速率
-    maxCycles = 500 #迭代次数
-    weights = ones((n,1),np.float32)#初始化权重矩阵
-    #开始迭代上升
-    for i in range(maxCycles):
-        temp = dot(dataMatrix,weights)
-        h = sigmoid(temp)
-        error = labelMat - h
-        temp2 = dot(dataMatrix.T,error)
-        print("--dataMatrix.shape--",dataMatrix.T.shape)
-        print(temp2.shape)
-        print(temp2)
-        print("--weights--",weights)
-        weights += alpha * (temp2)
+    alpha = 0.001
+    maxCycles = 500
+    weights = ones((n,1))
+    for k in range(maxCycles):              #heavy on matrix operations
+        h = sigmoid(dataMatrix*weights)     #matrix mult
+        error = (labelMat - h)              #vector subtraction
+        weights = weights + alpha * dataMatrix.transpose()* error #matrix mult
     return weights
+
 
 def plotBestFit():
     import matplotlib.pyplot as plt
-    # weights = wei.getA() #将矩阵转换为数组Array
-    dataMat,labelMat = load_dataset()
+    dataMat,labelMat = loadDataSet()
     dataArr = array(dataMat)
     n = shape(dataArr)[0]
     xcord1 = [];ycord1 = []
@@ -58,6 +97,6 @@ def plotBestFit():
     plt.show()
 
 
-dataArr,labelMat = load_dataset()
-gradAscent(dataArr,labelMat)
-# plotBestFit()
+dataArr,labelMat = loadDataSet()
+print(gradAscent(dataArr,labelMat))
+plotBestFit()
