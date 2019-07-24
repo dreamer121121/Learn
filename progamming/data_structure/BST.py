@@ -1,7 +1,4 @@
 
-
-
-
 class Node(object):
     def __init__(self,element):
         self.element=element
@@ -62,7 +59,7 @@ while data:
 print("length:"+str(tree.length))
 print("levelorder:")
 tree.level(tree.root)
-print("midorder:")
-tree.mid(tree.root)
+# print("midorder:")
+# tree.mid(tree.root)
 
 
