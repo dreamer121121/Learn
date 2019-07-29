@@ -43,7 +43,7 @@ class KD_tree:
             cur = self.root
 
         if cur is None:
-            cur = Node(1,eletoTree,parent)
+            cur = Node(l,eletoTree,parent)
 
         cur.lchild = self.create_tree(cur.lchild,depth+1,left_list,k,cur)
         cur.rchild = self.create_tree(cur.rchild,depth+1,right_list,k,cur)
@@ -58,6 +58,7 @@ class KD_tree:
         while queue:
             cur = queue.pop(0)
             print(cur.value)
+            print(cur.l)
             if cur.lchild:
                 queue.append(cur.lchild)
             if cur.rchild:
@@ -87,6 +88,7 @@ class KD_tree:
         self.nearestpoint = None
         self.nearestvalue = 0
         leaf_dis = self.compute_dis(t,leaf.value)
+
         def travel(cur,t):
             """
             由叶节点向根节点回溯
@@ -94,10 +96,10 @@ class KD_tree:
             :param t:
             :return:
             """
-            print("current nearstvalue:",self.nearestvalue)
             if cur is None: #说明到根节点了
                 return
             mindis = self.compute_dis(cur.value,t)
+
             if self.nearestpoint is None:
                 self.nearestpoint = cur
                 self.nearestvalue = mindis
@@ -106,11 +108,15 @@ class KD_tree:
                 self.nearestvalue = mindis
 
             l = cur.l
-            if abs(t[l]-cur.value[l])<self.nearestvalue and self.compute_dis(t,cur.value) != leaf_dis: #因为是从当前点开始往回搜索，最开始的叶子结点的abs(t[l]-cu.value[l])必然小与self.nerastvalue
+            print("l:",l)
+            if abs(t[l]-cur.value[l])<self.nearestvalue and cur != leaf: #因为是从当前点开始往回搜索，最开始的叶子结点的abs(t[l]-cu.value[l])必然小与self.nerastvalue
+                print("t[l]>cur.value[l]")
+                #这两句判断句对应算法中的：在当前子节点的父节点的另一个子节点所对应的区域中进行搜索
                 if t[l] <= cur.value[l] and cur.rchild:
                     travel(cur.rchild,t)
                 elif t[l] > cur.value[l] and cur.lchild:
                     travel(cur.lchild,t)
+                #这两句判断句对应算法中的：在当前子节点的父节点的另一个子节点所对应的区域中进行搜索
             else:
                 travel(cur.parent,t)
 
@@ -125,13 +131,82 @@ class KD_tree:
         """
         #1找到包含目标点的叶子节点
         leaf = self.fdleaf(self.root,ele)
-        print("--leaf.value--:",leaf.value)
+        print("leaf:",leaf.value)
         #递归向上搜索
         result = self.fdNN(leaf,ele)
 
         return result
 
 
+    def maintain_heap(self,i):
+        """
+        从堆顶开始调整
+        :param i:
+        :return:
+        """
+        left = 2*i+1
+        right = 2*i+2
+        if left < self.heap_length and self.heap[left][1] > self.heap[i][1]:
+            largest = left
+        elif right < self.heap_length and self.heap[right][1] > self.heap[i][1]:
+            largest = right
+        else:
+            largest = i
+        if largest != i:
+            self.heap[i],self.heap[largest] = self.heap[largest],self.heap[i]
+            self.maintain_heap(largest)
+
+
+    def searchKNN(self,ele,k):
+        """
+        此方法返回与输入值最接近的K个节点
+        :param ele:
+        :return:
+        """
+        self.heap = [] #创建一个空堆
+        self.heap_length = 0
+        self.k = k
+        def search(cur,t):
+            self.maintain_heap(0)
+            print("self.heap:",self.heap)
+            print("selg.heap_length",self.heap_length)
+            if cur is None: #递归边界：到达叶节点
+                return
+            l = cur.l
+            cur2t_dis = self.compute_dis(cur.value,t)
+            print("cur.value:",cur.value)
+            print("cur2t_dis",cur2t_dis)
+            if self.heap:
+                heaptop = self.heap[0]
+                heaptop_dis = heaptop[1]
+                if self.heap_length < self.k:
+                    self.heap.append([cur,self.compute_dis(cur.value,t)])
+                    self.heap_length += 1
+                    self.maintain_heap(0)
+
+                elif  cur2t_dis < heaptop_dis:
+                    self.heap[0] = [cur,self.compute_dis(cur.value,t)]
+                    self.maintain_heap(0)
+
+                if self.heap_length < self.k or abs(cur.value[l]-t[l]) < heaptop_dis:
+                    search(cur.lchild,t)
+                    search(cur.rchild,t)
+                elif t[l] < cur.value[l]:
+                    search(cur.lchild,t)
+                else:
+                    search(cur.rchild,t)
+            else:
+                self.heap.append([cur, self.compute_dis(cur.value, t)])
+                self.heap_length += 1
+                search(cur.lchild,ele)
+                search(cur.rchild,ele)
+        search(self.root,ele)
+
+        return sorted(self.heap,key=lambda x:x[1])
+
+
+
+#--------------------------------------------------------------------------------------------
 
 def compute_dis(ele,t):
     return np.linalg.norm(np.array(ele)-np.array(t))
@@ -139,29 +214,38 @@ def compute_dis(ele,t):
 
 
 def test(elements,t):
+    trace = []
     min_diss = float("inf")
     match_node = (float("inf"),float("inf"))
     for ele in elements:
         diss = compute_dis(ele,t)
+        trace.append((ele,diss))
         if diss < min_diss:
             min_diss = diss
             match_node = ele
-    return match_node
+    trace.sort(key=lambda x:x[1])
+    return match_node,min_diss,trace
 
 
 
 if __name__ == "__main__":
-    elements = [[7,2],[5,4],[9,6],[2,3],[4,7],[8,1]]
+    elements = [[7,2],[5,4],[9,6],[2,3],[3,5],[8,1]]
     kd = KD_tree()
     kd.create_tree(kd.root,0,elements,2)
-    print("search result:",kd.searchNN((5,4)).value)
 
+    # print("search result:",kd.searchNN((3,4.5)).value)
     # kd.levelorder()
 
     # kd.searchNN((6,8))
     #验证
-    # print("--验证：--",test(elements,(5,4)))
-    #
+    # print("--验证：--",test(elements,[3,4.5]))
+    k = 2
+    result = kd.searchKNN((3,4.5),2)
+    print("-----KD-KNN-----")
+    for i in range(k):
+        print(result[i][0].value,result[i][1])
+    #验证
+    print("--验证：--",test(elements,[3,4.5])[2][:2])
 
 
 
