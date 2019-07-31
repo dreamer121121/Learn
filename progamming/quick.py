@@ -1,5 +1,7 @@
 import random
-
+"""
+此代码的思路上不明朗,有错误！！！！！
+"""
 def quick_sort(array, l, r):
     if l < r:
         q = partition(array, l, r)
@@ -9,6 +11,7 @@ def quick_sort(array, l, r):
 
 def partition(array, l, r):
     #改成随机快排
+    print("--len(array)--",len(array))
     index = random.randint(0,len(array)-1)
     array[index],array[-1] = array[-1],array[index]
     j = -1
@@ -21,18 +24,7 @@ def partition(array, l, r):
     array[j],array[-1] = array[-1],array[j]
     return j
 
-
-    # pivot = array[r]
-    # low = -1
-    # for i in range(l, r):
-    #     if array[i] < pivot:
-    #         low += 1  # 保证low以前的数字都小于pivot值
-    #         array[low], array[i] = array[i], array[low]
-    # array[low + 1], array[r] = array[r], array[low + 1]
-    # return low + 1  # 返回枢轴点的位置
-
-
 if __name__ == '__main__':
-    A = [5, 23, 3, 6, 15]
+    A = [5,6,2,9,4,1,3,8,12,32,6,50,26]
     quick_sort(A, 0, len(A) - 1)
     print(A)
