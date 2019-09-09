@@ -294,63 +294,63 @@ class BinaryTree():
     def __init__(self):
         self._root = None
         self._length = 0
-    # def insert(self,item):
+    def insert(self,item):
 
-    #     """
-    #     利用迭代的方式创建二叉树
-    #     item,需要插入的数据
-    #     queue用来找到该插入的位置
-    #     :param item:
-    #     :return:
-    #     """
-    #     node = Node(item)
-    #     if self._root is None:
-    #         """如果根结点是None,是一颗空数,我们就把node赋值给root,那么下面的while循环是不会受影响的,因为是队列[None]的bool值是True"""
-    #         self._root = node
-    #         self._length += 1
-    #         return
-    #
-    #     queue = [self._root] #维护一个队列用于查找该插入的位置
-    #
-    #     while queue:
-    #         """队列的弹出要加0,与栈相仿"""
-    #         cur_node = queue.pop(0)
-    #         if cur_node._left is None:
-    #             """这里有空位,我们插入结点,如果能插入,就完事了"""
-    #             cur_node._left = node
-    #             self._length += 1
-    #             return
-    #         else:
-    #             """cur_node的左孩子我们放进队列中,下次循环左子结点"""
-    #             queue.append(cur_node._left)
-    #
-    #         """同理对右边的操作一样,还是手敲下吧"""
-    #
-    #         if cur_node._right is None:
-    #             cur_node._right = node
-    #             self._length += 1
-    #             return
-    #         else:
-    #             queue.append(cur_node._right)
+        """
+        利用迭代的方式创建二叉树
+        item,需要插入的数据
+        queue用来找到该插入的位置
+        :param item:
+        :return:
+        """
+        node = Node(item)
+        if self._root is None:
+            """如果根结点是None,是一颗空数,我们就把node赋值给root,那么下面的while循环是不会受影响的,因为是队列[None]的bool值是True"""
+            self._root = node
+            self._length += 1
+            return
 
+        queue = [self._root] #维护一个队列用于查找该插入的位置
 
-    def listcreattree(root, llist, i):  ###用列表递归创建二叉树，
-        # 它其实创建过程也是从根开始a开始，创左子树b，再创b的左子树，如果b的左子树为空，返回none。
-        # 再接着创建b的右子树，
-        if i < len(llist):
-            if llist[i] == '#':
-                return None  ###这里的return很重要
+        while queue:
+            """队列的弹出要加0,与栈相仿"""
+            cur_node = queue.pop(0)
+            if cur_node._left is None:
+                """这里有空位,我们插入结点,如果能插入,就完事了"""
+                cur_node._left = node
+                self._length += 1
+                return
             else:
-                root = Node(llist[i])
-                print('列表序号：' + str(i) + ' 二叉树的值：' + str(root._data))
-                # 往左递推
-                root.left = self.listcreattree(root.left, llist, 2 * i + 1)  # 从根开始一直到最左，直至为空，
-                # 往右回溯
-                root.right = self.listcreattree(root.right, llist, 2 * i + 2)  # 再返回上一个根，回溯右，
-                # 再返回根'
-                print('************返回根：', root._data)
-                return root  ###这里的return很重要
-        return root
+                """cur_node的左孩子我们放进队列中,下次循环左子结点"""
+                queue.append(cur_node._left)
+
+            """同理对右边的操作一样,还是手敲下吧"""
+
+            if cur_node._right is None:
+                cur_node._right = node
+                self._length += 1
+                return
+            else:
+                queue.append(cur_node._right)
+
+
+    # def listcreattree(root, llist, i):  ###用列表递归创建二叉树，
+    #     # 它其实创建过程也是从根开始a开始，创左子树b，再创b的左子树，如果b的左子树为空，返回none。
+    #     # 再接着创建b的右子树，
+    #     if i < len(llist):
+    #         if llist[i] == '#':
+    #             return None  ###这里的return很重要
+    #         else:
+    #             root = Node(llist[i])
+    #             print('列表序号：' + str(i) + ' 二叉树的值：' + str(root._data))
+    #             # 往左递推
+    #             root.left = self.listcreattree(root.left, llist, 2 * i + 1)  # 从根开始一直到最左，直至为空，
+    #             # 往右回溯
+    #             root.right = self.listcreattree(root.right, llist, 2 * i + 2)  # 再返回上一个根，回溯右，
+    #             # 再返回根'
+    #             print('************返回根：', root._data)
+    #             return root  ###这里的return很重要
+    #     return root
 
     def preorder(self,root):
         if root == None:
@@ -384,16 +384,46 @@ class BinaryTree():
             if cur._right != None:
                 queue.append(cur._right)
 
-#
-# ele = [1,2,3,4,5,6,7]
-# tree = BinaryTree()
-#
-# while ele:
-#     tree.insert(tree._root,ele.pop(0)) #一次直插入一个元素
-#
-# print("--tree.length--",tree._length)
+    def tree_h(self,root):
+        """
+        层次遍历方式求取树的深度
+        :param root:
+        :return:
+        """
+        if not root:
+            return 0
+        depth = 1
+        last = root
+        nlast = root
+        queue = [root]
+        while queue:
+            if queue[0] is None:
+                queue.pop(0)
+                continue
+            if queue[0]._left is None and queue[0]._right is None:
+                pass
+            else:
+                queue.append(queue[0]._left)
+                queue.append(queue[0]._right)
+            nlast = queue[-1]
+            if queue.pop(0) == last and len(queue)>1:
+                depth +=1
+                last = nlast
+            else:
+                continue
+        return depth
+
+
+ele = [1,2,3,4,5,6]
+tree = BinaryTree()
+
+while ele:
+    tree.insert(ele.pop(0)) #一次直插入一个元素
+
+print("--tree.length--",tree._length)
 # print("preorder：\n")
 # tree.preorder(tree._root)
+print("tree_height: ",tree.tree_h(tree._root))
 # print("midorder:\n")
 # tree.midorder(tree._root)
 # print("postorder:\n")
@@ -401,10 +431,9 @@ class BinaryTree():
 # print("level:\n")
 # tree.level(tree._root)
 
-
-from binarytree import tree
-mytree = tree()
-print(mytree)
+# from binarytree import tree
+# mytree = tree()
+# print(mytree)
 
 
 
