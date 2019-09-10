@@ -386,7 +386,7 @@ class BinaryTree():
 
     def tree_h(self,root):
         """
-        层次遍历方式求取树的深度
+        层次遍历方式求取二叉树的深度
         :param root:
         :return:
         """
