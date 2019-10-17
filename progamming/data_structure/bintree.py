@@ -281,149 +281,149 @@
 # print(bst.numbers_of_nodes())
 
 
-class Node():
-    def __init__(self,data = None):
-        self._left = None
-        self._right = None
-        self._data = data
+# class Node():
+#     def __init__(self,data = None):
+#         self._left = None
+#         self._right = None
+#         self._data = data
 
 
 #
-class BinaryTree():
-
-    def __init__(self):
-        self._root = None
-        self._length = 0
-    def insert(self,item):
-
-        """
-        利用迭代的方式创建二叉树
-        item,需要插入的数据
-        queue用来找到该插入的位置
-        :param item:
-        :return:
-        """
-        node = Node(item)
-        if self._root is None:
-            """如果根结点是None,是一颗空数,我们就把node赋值给root,那么下面的while循环是不会受影响的,因为是队列[None]的bool值是True"""
-            self._root = node
-            self._length += 1
-            return
-
-        queue = [self._root] #维护一个队列用于查找该插入的位置
-
-        while queue:
-            """队列的弹出要加0,与栈相仿"""
-            cur_node = queue.pop(0)
-            if cur_node._left is None:
-                """这里有空位,我们插入结点,如果能插入,就完事了"""
-                cur_node._left = node
-                self._length += 1
-                return
-            else:
-                """cur_node的左孩子我们放进队列中,下次循环左子结点"""
-                queue.append(cur_node._left)
-
-            """同理对右边的操作一样,还是手敲下吧"""
-
-            if cur_node._right is None:
-                cur_node._right = node
-                self._length += 1
-                return
-            else:
-                queue.append(cur_node._right)
-
-
-    # def listcreattree(root, llist, i):  ###用列表递归创建二叉树，
-    #     # 它其实创建过程也是从根开始a开始，创左子树b，再创b的左子树，如果b的左子树为空，返回none。
-    #     # 再接着创建b的右子树，
-    #     if i < len(llist):
-    #         if llist[i] == '#':
-    #             return None  ###这里的return很重要
-    #         else:
-    #             root = Node(llist[i])
-    #             print('列表序号：' + str(i) + ' 二叉树的值：' + str(root._data))
-    #             # 往左递推
-    #             root.left = self.listcreattree(root.left, llist, 2 * i + 1)  # 从根开始一直到最左，直至为空，
-    #             # 往右回溯
-    #             root.right = self.listcreattree(root.right, llist, 2 * i + 2)  # 再返回上一个根，回溯右，
-    #             # 再返回根'
-    #             print('************返回根：', root._data)
-    #             return root  ###这里的return很重要
-    #     return root
-
-    def preorder(self,root):
-        if root == None:
-            return
-        print(root._data)
-        self.preorder(root._left)
-        self.preorder(root._right)
-
-    def midorder(self,root):
-        if root == None:
-            return False
-        self.midorder(root._left)
-        print(root._data)
-        self.midorder(root._right)
-
-    def postorder(self,root):
-
-        if root == None:
-            return False
-        self.postorder(root._left)
-        self.postorder(root._right)
-        print(root._data)
-
-    def level(self,root):
-        queue = [root]
-        while queue:
-            cur = queue.pop(0)
-            print(cur._data)
-            if cur._left != None:
-                queue.append(cur._left)
-            if cur._right != None:
-                queue.append(cur._right)
-
-    def tree_h(self,root):
-        """
-        层次遍历方式求取二叉树的深度
-        :param root:
-        :return:
-        """
-        if not root:
-            return 0
-        depth = 1
-        last = root
-        nlast = root
-        queue = [root]
-        while queue:
-            if queue[0] is None:
-                queue.pop(0)
-                continue
-            if queue[0]._left is None and queue[0]._right is None:
-                pass
-            else:
-                queue.append(queue[0]._left)
-                queue.append(queue[0]._right)
-            nlast = queue[-1]
-            if queue.pop(0) == last and len(queue)>1:
-                depth +=1
-                last = nlast
-            else:
-                continue
-        return depth
-
-
-ele = [1,2,3,4,5,6]
-tree = BinaryTree()
-
-while ele:
-    tree.insert(ele.pop(0)) #一次直插入一个元素
-
-print("--tree.length--",tree._length)
-# print("preorder：\n")
-# tree.preorder(tree._root)
-print("tree_height: ",tree.tree_h(tree._root))
+# class BinaryTree():
+#
+#     def __init__(self):
+#         self._root = None
+#         self._length = 0
+#     def insert(self,item):
+#
+#         """
+#         利用迭代的方式创建二叉树
+#         item,需要插入的数据
+#         queue用来找到该插入的位置
+#         :param item:
+#         :return:
+#         """
+#         node = Node(item)
+#         if self._root is None:
+#             """如果根结点是None,是一颗空数,我们就把node赋值给root,那么下面的while循环是不会受影响的,因为是队列[None]的bool值是True"""
+#             self._root = node
+#             self._length += 1
+#             return
+#
+#         queue = [self._root] #维护一个队列用于查找该插入的位置
+#
+#         while queue:
+#             """队列的弹出要加0,与栈相仿"""
+#             cur_node = queue.pop(0)
+#             if cur_node._left is None:
+#                 """这里有空位,我们插入结点,如果能插入,就完事了"""
+#                 cur_node._left = node
+#                 self._length += 1
+#                 return
+#             else:
+#                 """cur_node的左孩子我们放进队列中,下次循环左子结点"""
+#                 queue.append(cur_node._left)
+#
+#             """同理对右边的操作一样,还是手敲下吧"""
+#
+#             if cur_node._right is None:
+#                 cur_node._right = node
+#                 self._length += 1
+#                 return
+#             else:
+#                 queue.append(cur_node._right)
+#
+#
+#     # def listcreattree(root, llist, i):  ###用列表递归创建二叉树，
+#     #     # 它其实创建过程也是从根开始a开始，创左子树b，再创b的左子树，如果b的左子树为空，返回none。
+#     #     # 再接着创建b的右子树，
+#     #     if i < len(llist):
+#     #         if llist[i] == '#':
+#     #             return None  ###这里的return很重要
+#     #         else:
+#     #             root = Node(llist[i])
+#     #             print('列表序号：' + str(i) + ' 二叉树的值：' + str(root._data))
+#     #             # 往左递推
+#     #             root.left = self.listcreattree(root.left, llist, 2 * i + 1)  # 从根开始一直到最左，直至为空，
+#     #             # 往右回溯
+#     #             root.right = self.listcreattree(root.right, llist, 2 * i + 2)  # 再返回上一个根，回溯右，
+#     #             # 再返回根'
+#     #             print('************返回根：', root._data)
+#     #             return root  ###这里的return很重要
+#     #     return root
+#
+#     def preorder(self,root):
+#         if root == None:
+#             return
+#         print(root._data)
+#         self.preorder(root._left)
+#         self.preorder(root._right)
+#
+#     def midorder(self,root):
+#         if root == None:
+#             return False
+#         self.midorder(root._left)
+#         print(root._data)
+#         self.midorder(root._right)
+#
+#     def postorder(self,root):
+#
+#         if root == None:
+#             return False
+#         self.postorder(root._left)
+#         self.postorder(root._right)
+#         print(root._data)
+#
+#     def level(self,root):
+#         queue = [root]
+#         while queue:
+#             cur = queue.pop(0)
+#             print(cur._data)
+#             if cur._left != None:
+#                 queue.append(cur._left)
+#             if cur._right != None:
+#                 queue.append(cur._right)
+#
+#     def tree_h(self,root):
+#         """
+#         层次遍历方式求取二叉树的深度
+#         :param root:
+#         :return:
+#         """
+#         if not root:
+#             return 0
+#         depth = 1
+#         last = root
+#         nlast = root
+#         queue = [root]
+#         while queue:
+#             if queue[0] is None:
+#                 queue.pop(0)
+#                 continue
+#             if queue[0]._left is None and queue[0]._right is None:
+#                 pass
+#             else:
+#                 queue.append(queue[0]._left)
+#                 queue.append(queue[0]._right)
+#             nlast = queue[-1]
+#             if queue.pop(0) == last and len(queue)>1:
+#                 depth +=1
+#                 last = nlast
+#             else:
+#                 continue
+#         return depth
+#
+#
+# ele = [1,2,3,4,5,6]
+# tree = BinaryTree()
+#
+# while ele:
+#     tree.insert(ele.pop(0)) #一次直插入一个元素
+#
+# print("--tree.length--",tree._length)
+# # print("preorder：\n")
+# # tree.preorder(tree._root)
+# print("tree_height: ",tree.tree_h(tree._root))
 # print("midorder:\n")
 # tree.midorder(tree._root)
 # print("postorder:\n")
@@ -435,8 +435,126 @@ print("tree_height: ",tree.tree_h(tree._root))
 # mytree = tree()
 # print(mytree)
 
+# class Node():
+#     def __init__(self,x):
+#         self.value = x
+#         self.left = None
+#         self.right = None
 
+def print_row(root):
+    """
+    按行打印二叉树
+    :param root:
+    :return:
+    """
+    if not root:
+        return
+    queue = [root]
+    last = root
+    nlast = root
+    while queue:
+        q_top = queue[0]#队顶元素
+        if q_top.left: #排除了q_top.left是None的情况了因此None不会加入到queue中。
+            queue.append(q_top.left)
+        if q_top.right:
+            queue.append(q_top.right)
+        nlast = queue[-1] #nlast紧跟队底元素
+        current = queue.pop(0) #出队
+        print(current.value)
+        if current == last: #该换行了
+            print("\n")
+            last = nlast
 
+def Serialize(root):
+    """
+    按层次遍历序列化二叉树
+    :param root:
+    :return:
+    """
+    tmp,ch = [root],[] #一个队列，一个顺序表。
+    while tmp:
+        q_top = tmp.pop(0)
+        if q_top is None:
+            ch.append('#!')
+        else:
+            tmp.append(q_top.left)
+            tmp.append(q_top.right)
+            ch.append(str(q_top.value)+'!')
+    result = ''.join(ch)
+    return result
 
+def Deserialize(str):
+    """
+    反序列化二叉树
+    :param root:
+    :return:
+    """
+    sequence = str[:-1].split('!')
+    print(sequence)
+    root = Node(int(sequence.pop(0)))
+    queue = [root]
+    # while sequence:
+    #     print(sequence)
+    #     ele = sequence.pop(0)
+    #     print("当前待插入元素：",ele)
+    #     # queue = [root]  # 每一次插入时都从根节点开始查找插入位置
+    #     while True:
+    #         """
+    #         一次插一个元素
+    #         """
+    #         q_top = queue.pop(0)
+    #         if not q_top.left:
+    #             print("左边插入：")
+    #             if ele is not '#':
+    #                 q_top.left = Node(int(ele))
+    #             else:
+    #                 q_top.left = None
+    #                 queue.append(q_top.left)
+    #
+    #
+    #         elif not q_top.right:
+    #             print("在右边插入：")
+    #             if ele is not '#':
+    #                 q_top.right = Node(int(ele))
+    #             else:
+    #                 q_top.right = None
+    #                 queue.append(q_top.right)
+    #             break
+    #         else:
+    #             print("此次循环没有可插入位置")
+    #             queue.append(q_top.left)
+    #             queue.append(q_top.rig
+    while queue:
+        l_ele = sequence.pop(0)
+        r_ele = sequence.pop(0) #同时一次性处理一个节点的两个元素
+        q_top = queue[0]
+        if l_ele != '#' and r_ele != '#':
+            q_top.left = Node(int(l_ele))
+            q_top.right = Node(int(r_ele))
+            queue.append(q_top.left)
+            queue.append(q_top.right)
+            queue.pop(0)
+        elif l_ele != '#' and r_ele == '#':
+            q_top.left =  Node(int(l_ele))
+            queue.append(q_top.left)
+            queue.pop(0)
+        elif l_ele== '#' and r_ele != '#':
+            q_top.right = Node(int(r_ele))
+            queue.append(q_top.right)
+            queue.pop(0)
+        else:
+            queue.pop(0)
 
+    print("结果：",root)
 
+from binarytree import Node
+# root = Node(1)
+# root.left = Node(2)
+# root.right = Node(3)
+# root.right.left = Node(4)
+# root.right.right = Node(5)
+# print(root)
+# print_row(root)
+# print(Serialize(root))
+string = '1!2!3!#!#!4!5!#!#!#!#!'
+Deserialize(string)
