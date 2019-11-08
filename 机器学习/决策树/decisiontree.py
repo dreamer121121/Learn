@@ -104,9 +104,11 @@ def createTree(dataset,labels):
     :param labels:
     :return:
     """
-    classList = [example[-1] for example in dataset ]
 
-    #终止条件1：数据集中所有数据的分类相同
+    classList = [example[-1] for example in dataset ] #列表解析式。
+
+    #两个递归的终止条件
+    #终止条件1：当前节点数据集中所有数据的分类相同
     if classList.count(classList[0]) == len(classList):
         return classList[0]
 
@@ -126,8 +128,6 @@ def createTree(dataset,labels):
         sublabels = labels[:]
         mytree[bestFeatLabel][val] = createTree(subdataset,sublabels)
     return mytree
-
-
 
 
 #绘制决策树
@@ -213,7 +213,7 @@ fr = open("lenses.txt",'r')
 lenses = [inst.strip().split('\t') for inst in fr.readlines()]
 lenseslabels = ['age','prescript','astigmatic','tearRate']
 lensesTree = createTree(lenses,lenseslabels)
-createPlot(lensesTree)
+# createPlot(lensesTree)
 
 
 
