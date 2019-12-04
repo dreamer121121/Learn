@@ -6,7 +6,7 @@ class soulution():
         nums.sort()
         self.dfs(nums,0,target,[])
 
-    def dfs(self,nums,start,target,result):
+    def dfs(self,nums,start,target,result):#用result作为一个栈来存储path
         if sum(result) == target:
             self.reult_all.append(result[:])
             return
