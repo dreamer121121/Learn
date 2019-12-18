@@ -100,7 +100,7 @@ import random
 """快速排序"""
 def quick_sort(b):
     """快速排序"""
-    if len(b) < 2:
+    if len(b) < 2: #递归边界条件
         return b
     # 选取基准，随便选哪个都可以，选中间的便于理解
     index = random.randint(0,len(b)-1) #随机快排
