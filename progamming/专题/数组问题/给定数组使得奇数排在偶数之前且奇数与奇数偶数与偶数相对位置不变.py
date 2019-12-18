@@ -18,7 +18,7 @@ class Solution:
         for i in range(length):
             if array[i]%2:#发现奇数
                 j = i
-                while j > k:
+                while j > k:#一个一个换过去就是为了保证其他元素的相对位置的稳定！
                     array[j],array[j-1] = array[j-1],array[j]
                     j-=1
                 k += 1
