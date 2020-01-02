@@ -1,4 +1,5 @@
 class soulution():
+    #无重复元素，同一元素在一个组合中可以使用多次，最终解集合中没有重复的组合
     def __init__(self):
         self.reult_all = []
 
