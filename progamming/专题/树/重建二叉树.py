@@ -1,7 +1,5 @@
 from binarytree import Node
 class Solution():
-    def __init__(self):
-        self._root = None
     def reconstructBinaryTree(self,pre,tin):
         #已知前序遍历和中序遍历重建二叉树
         if len(pre) > 0:
@@ -16,5 +14,5 @@ class Solution():
             return None
 
 s = Solution()
-s.reconstructBinaryTree([1,2,4,7,3,5,6,8],[4,7,2,1,5,3,8,6])
-print(s._root)
+print(s.reconstructBinaryTree([1,2,4,7,3,5,6,8],[4,7,2,1,5,3,8,6]))
+

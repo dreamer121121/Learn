@@ -1,5 +1,17 @@
 class Solution():
-    def maxsubArray(self,nums,l,r):
+    def maxsubArray(self,nums):
+        #暴力法O(N2)
+        max_sum=-float('inf')
+        for i in range(len(nums)):
+            sum = 0
+            for j in range(i,len(nums)):
+                sum += nums[j]
+                if sum > max_sum:
+                    max_sum = sum
+                else:
+                    continue
+        return max_sum
+    def maxsubArray2(self,nums,l,r):
         #方法一：分治法 O(logN)
         if l >= r:
             return nums[l]
@@ -28,28 +40,15 @@ class Solution():
                 continue
         return max_left + max_right
 
-    def maxsubArray2(self,nums):
-        #暴力法O(N2)
-        max_sum=-float('inf')
-        for i in range(len(nums)):
-            sum = 0
-            for j in range(i,len(nums)):
-                sum += nums[j]
-                if sum > max_sum:
-                    max_sum = sum
-                else:
-                    continue
-        return max_sum
     def maxsubArray3(self,nums):
         #动态规划O(N)
         dp = []
         dp.append(nums[0])
         for i in range(1,len(nums)):
             dp.append(max(dp[i-1]+nums[i],nums[i])) #关键找到此递推关系式
+            #当前这个位置为止的最大子序和为上一个位置为止的最大自序和加上当前位置的值，与当前位置的值相比大者。
+            
         return max(dp)
-
-
-
 
 s = Solution()
 print(s.maxsubArray([-2,1,-3,4,-1,2,1,-5,4],0,7))

@@ -21,9 +21,19 @@ class Solution():
                 cnt -= 1
             if cnt == 0:
                 current = numbers[i+1]
-        return current if cnt > 0 else 0
+
+        """再一次判断"""
+        total = 0
+        for i in range(len(numbers)):
+            if numbers[i] == current:
+                total += 1
+        if total > len(numbers)/2.0:
+            return  current
+        else:
+            return 0
+
 
 s = Solution()
-print(s.MoreThanHalfNum_Solution([1,2,3,2,2,2,5,4,2]))
+# print(s.MoreThanHalfNum_Solution([1,2,3,2,2,2,5,4,2]))
 
-print(s.MoreThanHalfNum([1,2,3,2,2,2,5,4,2]))
+print(s.MoreThanHalfNum([1,2,3,4,5,6,7]))
