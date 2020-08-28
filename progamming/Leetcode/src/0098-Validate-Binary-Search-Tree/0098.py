@@ -1,22 +1,22 @@
-# class Solution:
-#     def _isValidBST(self, root, left=None, right=None):
-#         if not root:
-#             return True
+class Solution:
+    def _isValidBST(self, root, left=None, right=None):
+        if not root:
+            return True
 
-#         if left and left.val >= root.val:
-#             return False
+        if left and left.val >= root.val:
+            return False
 
-#         if right and right.val <= root.val:
-#             return False
+        if right and right.val <= root.val:
+            return False
 
-#         return self._isValidBST(root.left, left, root) and self._isValidBST(root.right, root, right)
+        return self._isValidBST(root.left, left, root) and self._isValidBST(root.right, root, right)
 
-#     def isValidBST(self, root):
-#         """
-#         :type root: TreeNode
-#         :rtype: bool
-#         """
-#         return self._isValidBST(root)
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        return self._isValidBST(root)
 
 
 class Solution:

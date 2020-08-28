@@ -123,5 +123,5 @@ print(heap.heap_sort())
 # print(quick_sort([5,6,7,3,2,9]))
 
 # """一行实现快速排序"""
-# quick_sort = lambda array:array if len(array)<2 else quick_sort([item for item in array[1:] if item < array[0]])+[array[0]]+quick_sort([item for item in array[1:] if item > array[0]])
-# print(quick_sort([2,6,3,5,7,1]))
+quick_sort = lambda array:array if len(array)<2 else quick_sort([item for item in array[1:] if item < array[0]])+[array[0]]+quick_sort([item for item in array[1:] if item > array[0]])
+print(quick_sort([2,6,3,5,7,1]))

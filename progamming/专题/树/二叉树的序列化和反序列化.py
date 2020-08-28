@@ -49,4 +49,4 @@ class Solution():
 
 s = Solution()
 print(s.Serialize(root1))
-print(s.Deserialize(string))
+# print(s.Deserialize(string))

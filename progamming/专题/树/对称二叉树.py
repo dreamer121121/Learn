@@ -9,6 +9,7 @@ class Solution():
         return self.resursiveTree(pRoot.left,pRoot.right)
 
     def resursiveTree(self,left,right):
+        #函数定义：判断两棵树是否是关于中轴线对称的（相信他能实现！）
         #递归终止条件此处三个递归终止条件的顺序要注意一下，互相可以作为筛选条件。
         #判断是否都为None
         if not left and not right:

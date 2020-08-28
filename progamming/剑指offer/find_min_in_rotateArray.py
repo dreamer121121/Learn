@@ -4,10 +4,10 @@ def minNumberInRotateArray(rotateArray):
     if len(rotateArray) == 1:
         return rotateArray[0]
     else:
-        left = 0
+        left = 0    if int(right-left) == 1:
         right = len(rotateArray) - 1
         while rotateArray[left] >= rotateArray[right]:
-            if int(right-left) == 1:
+
                 return rotateArray[right]
             mid = (left + right) // 2
             """关键部分"""
