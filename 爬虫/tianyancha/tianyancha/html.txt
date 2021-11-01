@@ -1,0 +1,989 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no minimal-ui">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <meta http-equiv="cache-control" content="no-transform">
+    <meta http-equiv="cache-control" content="no-siteapp">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset="UTF-8">
+
+    <meta name="fragment" content="!">
+
+    <meta name="tyc-device" content="mobile">
+
+    <title>天眼查校验</title>
+    <link rel="shortcut icon" href="http://static.tianyancha.com/wap/images/favicon.ico">
+    <script src="https://static.tianyancha.com/wap/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.tianyancha.com/web-require-js/public/styles/main-6574226aec.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+        }
+
+        .mainv2_container .abs .zhuanti span {
+            color: #5b5b5b;
+            padding: 5px;
+            display: block;
+
+        }
+
+        .mainv2_container .abs .zhuanti a {
+            color: #aaa;
+        }
+
+        .mainv2_container .abs .zhuanti a:hover {
+            text-decoration: none;
+            color: #d5d5d5;
+        }
+
+        .right img {
+            padding: 0;
+        }
+
+        .mainv2_container .top .right .hover_title .abs img {
+            padding: 0;
+        }
+
+        .mainv2_container .abs_zhuanti {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            width: 130px;
+            padding: 10px;
+            background-color: #4d4d4d;
+            color: #aaa;
+        }
+
+        .mainv2_container .abs_zhuanti hr {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border-top: 1px solid #6d6d6d;
+
+        }
+
+        .mainv2_container .abs_zhuanti a {
+            display: inline-block;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .mainv2_container .abs_zhuanti a:hover {
+            text-decoration: none;
+            color: #d5d5d5;
+        }
+
+        #download {
+            display: none;
+        }
+
+        #weichat {
+            display: none;
+        }
+
+        #zhuanti {
+            display: none;
+        }
+
+        .inner_contact_us p {
+            height: 30px;
+            font-size: 14px;
+            color: #4d4d4d;
+            line-height: 30px;
+            margin: 0;
+        }
+
+        .email span {
+            color: #438fc7;
+        }
+
+        .box2 {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 20px;
+        }
+
+        .box2 .ip {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-left: auto;
+            margin-right: auto;
+            width: 900px;
+            padding-top: 20px;
+            text-align: center;
+	    min-height: 600px;
+        }
+
+        .box2 .gt_holder .gt_bottom a {
+            display: none;
+        }
+
+        .box2 .gt_holder .gt_bottom a:first-child {
+            display: block;
+            position: absolute;
+            right: 6px;
+            bottom: 23px;
+            color: #fff;
+        }
+
+        .foot {
+            width: 740px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            border-bottom: 1px solid #9e9e9e;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            color: #9e9e9e;
+        }
+
+        .foot hr {
+            width: 310px;
+            border-top: 1px dashed #c0bfbf;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .foot2 {
+            margin-top: 10px;
+        }
+
+        .foot2 .text {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .foot2 .text a {
+            color: #9e9e9e;
+            display: inline-block;
+            margin-right: 35px;
+            text-decoration: none;
+        }
+
+        .foot2 .text a:hover {
+            color: #9e9e9e;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .foot2 .text span {
+            color: #9e9e9e;
+            display: inline-block;
+            margin-right: 35px;
+        }
+
+        .foot2 .ff {
+            margin-top: 12px;
+            font-size: 12px;
+            text-align: center;
+            color: #9e9e9e;
+        }
+
+        .my_btn_web {
+            /*display: inline-block;*/
+            /*color: #fff;*/
+            /*font-size: 16px;*/
+            /*margin-top: 15px;*/
+            /*border-radius: 5px;*/
+            /*width: 320px;*/
+            /*text-align: center;*/
+            /*padding-top: 10px;*/
+            /*padding-bottom: 10px;*/
+            /*background-color: #01abcc;*/
+            /*margin-left: 15px;*/
+            width: 120px;
+            margin-top: 24px;
+        }
+
+        .captcha-title{
+            font-size: 20px;
+            color: #151515;
+            letter-spacing: 0;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .my_btn_web:hover {
+            /*background-color: rgba(1,171,204,0.8);*/
+
+        }
+        .new-box94 {
+            border: 1px solid #cccccc;
+            padding: 10px 20px;
+        }
+        .f12 {
+            font-size: 12px;
+        }
+        .c9 {
+            color: #009bae;
+        }
+        .c6 {
+            color: #666;
+        }
+        .question {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+        }
+        .ABmid {
+            vertical-align: middle;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .recAdd {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #f68b45;
+            position: absolute;
+        }
+        .recCircle {
+            position: absolute;
+            right: -8px;
+            top: -8px;
+            width: 15px;
+            height: 15px;
+            border-radius: 100px;
+            background-color: #f68b45;
+            color: #fff;
+            font-size: 12px;
+            line-height: 14px;
+        }
+        @media (max-width: 420px) {
+            .mainv2_container {
+                display: none;
+            }
+            .foot {
+                display: none;
+            }
+            .content {
+                width: 100%;
+                padding-top: 20px;
+            }
+            .foot2 .text span{
+                margin-right: 17px;
+            }
+            .foot2 .text a{
+                margin-right: 17px;
+                color: #ffffff;
+            }
+            .new-box94{
+                padding: 0;
+                border: none;
+            }
+            .question{
+                margin-top: 5px;
+            }
+            .wapHeader{
+                display: block;
+                text-align: center;
+                color: #ffffff;
+                font-size: 18px;
+                background-color: #2e2e2e;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            .box2 .ip{
+                margin-bottom: 5px;
+            }
+            .btPage{
+                display: block;
+                margin-top: 30px;
+                font-size: 16px;
+                text-align: center;
+            }
+            .btPage a{
+                color: #999;
+            }
+        }
+        @media (min-width: 420px) {
+            .mainv2_container {
+                display: block;
+            }
+            .wapHeader{
+                display: none;
+            }
+            .btPage{
+                display: none;
+            }
+        }
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            $("#downloadTitle").mouseover(function () {
+                $("#download").css('display', 'block');
+            });
+            $("#downloadTitle").mouseleave(function () {
+                $("#download").css('display', 'none');
+            });
+            $("#weichatTitle").mouseover(function () {
+                $("#weichat").css('display', 'block');
+            });
+            $("#weichatTitle").mouseleave(function () {
+                $("#weichat").css('display', 'none');
+            });
+            $("#zhuantiTitle").mouseover(function () {
+                $("#zhuanti").css('display', 'block');
+            });
+            $("#zhuantiMain").mouseleave(function () {
+                $("#zhuanti").css('display', 'none');
+            });
+
+        });
+    </script>
+    <script type="text/javascript">
+        (function () {
+            var method;
+            var noop = function () {
+            };
+            var methods = [
+                'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+                'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+                'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+                'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
+            ];
+            var length = methods.length;
+            var console = (window.console = window.console || {});
+
+            while (length--) {
+                method = methods[length];
+
+                // Only stub undefined methods.
+                if (!console[method]) {
+                    console[method] = noop;
+                }
+            }
+            CacheStoarge = function CacheStoarge() {
+                var _bb = [];
+                return {
+                    _tt: function (bbV, bbE, bbX) {
+                        bbX ? _bb.push(bbX) : _bb[bbV].push(bbE);
+                    },
+                    _ff: function (ii) {
+                        //console.log(_bb);
+                        return _bb[ii];
+                    }
+                };
+            };
+            DOMImplementaiton = CacheStoarge();
+        }());
+        (function( $, window ){
+
+            var $win = $(window)
+                    , _css = $.fn.css;
+
+            function viewportToPixel( val ) {
+                var percent = val.match(/\d+/)[0] / 100,
+                        unit = val.match(/[vwh]+/)[0];
+                return (unit == 'vh' ? $win.height() : $win.width()) * percent + 'px';
+            }
+
+            function parseProps( props ) {
+                var p, prop;
+                for ( p in props ) {
+                    prop = props[ p ];
+                    if ( /[vwh]$/.test( prop ) ) {
+                        props[ p ] = viewportToPixel( prop );
+                    }
+                }
+                return props;
+            }
+
+            $.fn.css = function( props ) {
+                var self = this,
+                        update = function() {
+                            return _css.call( self, parseProps( $.extend( {}, props ) ) );
+                        };
+                $win.resize( update );
+                return update();
+            };
+
+        }( jQuery, window ));
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function getQueryString(name) {
+                var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return r[2];
+                }
+                return null;
+            }
+            var return_url = getQueryString('return_url');
+            var rnd = getQueryString('rnd');
+            var temp_url = decodeURIComponent(return_url);
+            if (/\?/.test(temp_url)) {
+                var urlFrom = temp_url + '&rnd=' + decodeURIComponent(rnd);
+            } else {
+                var urlFrom = temp_url + '?rnd=' + decodeURIComponent(rnd);
+            }
+            $('#notIe').css('display', 'none');
+            $("#refeshie").bind("click", function () {
+                window.location.reload()
+            })
+            var objie = {};
+            var url = "/captcha/getCaptcha.json?t=";
+            if (window.location.host === 'transcoder.tradaquan.com') {
+                url = "http://antirobot.tianyancha.com/captcha/getCaptcha.json?t=";
+            }
+            $.ajax({
+                url: url + new Date().getTime(),
+                type: "get",
+                cache: false,
+                dataType: "json", // 使用jsonp格式
+                success: function (data) {
+                    objie.captchaId = data.data.id;
+                    if(data.data.mobile){
+                        $("#user_mobile_box").show();
+                    }
+                    $("#user_mobile").html(data.data.mobile);
+                    $("#ipContentIe").html(data.data.userIp);
+                    $("#timeContentIe").html(data.data.currentTime);
+                    $('#targetImgie').attr('src', 'data:image/png;base64,' + data.data.targetImage);
+                    $('#bgImgie').attr('src', 'data:image/png;base64,' + data.data.bgImage);
+                }
+            });
+            var list = [];
+
+            function drawImg(x, y, t) {
+                $('#bgImgie').parent().append("<div class='recAdd' style='left:" + x + "px;top:" + y + "px;'><div class='recCircle'>"+t+"</div></div>");
+            }
+
+            var clickTimes = 1;
+
+            function getPositionIE(event) {
+                if(clickTimes>9)
+                    return;
+                var x = new Number();
+                var y = new Number();
+                if (event.x != undefined && event.y != undefined) {
+                    x = event.x;
+                    y = event.y;
+                }
+                else // Firefox method to get the position
+                {
+                    x = event.clientX + document.body.scrollLeft +
+                            document.documentElement.scrollLeft;
+                    y = event.clientY + document.body.scrollTop +
+                            document.documentElement.scrollTop;
+                }
+                x -= $('#bgImgie').offset().left;
+                y -= $('#bgImgie').offset().top;
+                x = parseInt(x);
+                y = parseInt(y);
+                drawImg(x - 12, y - 12, clickTimes);
+                clickTimes++;
+                list.push({'x': x, 'y': y});
+            }
+            $("#bgImgie").bind("click", function (event) {
+                getPositionIE(event);
+            })
+            $("#submitie").bind("click", function () {
+                $.ajaxSetup({
+                    beforeSend: function (xhr, settings) {
+                        function getCookie(name) {
+                            var cookieValue = null;
+                            if (document.cookie && document.cookie != '') {
+                                var cookies = document.cookie.split(';');
+                                for (var i = 0; i < cookies.length; i++) {
+                                    var cookie = jQuery.trim(cookies[i]);
+                                    // Does this cookie string begin with the name we want?
+                                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                        break;
+                                    }
+                                }
+                            }
+                            return cookieValue;
+                        }
+                        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                        }
+                    }
+                });
+
+                var url = "/captcha/checkCaptcha.json?captchaId=";
+                if (window.location.host === 'transcoder.tradaquan.com') {
+                    url = "http://antirobot.tianyancha.com/captcha/checkCaptcha.json?captchaId=";
+                }
+                $.ajax({
+                    url: url + objie.captchaId + "&clickLocs=" + JSON.stringify(list) + "&t=" + new Date().getTime(),
+                    type: "get",
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.state == 'fail') {
+                            $('#checkFalse').show();
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 1000);
+                        }
+                        if (data.state == 'invalid') {
+                            location.assign('http://www.tianyancha.com');
+                        }
+                        if (data.state == 'ok') {
+                            if (urlFrom) {
+                                location.assign(urlFrom);
+                            } else {
+                                location.assign('http://www.tianyancha.com');
+                            }
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+
+</head>
+<body style="overflow-x: hidden; position: relative;" class="clearfix">
+<div class="tyc-header ">
+    <div class="container rel">
+        <div class="left "><a class="logo-header" href="https://www.tianyancha.com"><i class="tic tic-tyc-logo tyc"></i><i class="tic tic-tyc-logo-txt tyc-text"></i></a>
+            <div class="header-intro">
+                <div class="top">都在用的商业安全工具</div>
+                <div class="bottom">国家中小企业发展基金旗下</div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="tab-header -search">
+                <div class="head">
+                    <div class="item company active">
+                        <div class="top">查公司</div>
+                    </div>
+                    <div class="item human">
+                        <div class="top">查老板</div>
+                    </div>
+                    <div class="item relationTab">
+                        <div class="top">查关系</div>
+                    </div>
+                </div>
+                <div class="search">
+                    <div class="input-group search-group" id="company">
+                        <form autocomplete="off">
+                            <div class="live-search-wrap"><input class="input -sm js-live-search-auto" type="search" id="header-company-search" maxlength="50" placeholder="请输入公司名称、老板姓名、品牌名称等" value="">
+                            </div>
+                        </form>
+                        <div class="input-group-btn btn -sm btn-primary" onclick="searchCompany('#header-company-search')">
+                            天眼一下
+                        </div>
+                    </div>
+                    <div class="input-group search-group" id="human" style="display:none;">
+                        <form autocomplete="off">
+                            <div class="live-search-wrap"><input class="input -sm js-live-search-auto" id="header-human-search" livesearch-is-human="true" enter-selected="true" type="search" maxlength="50" placeholder="请输入老板信息，如‘马云 杭州’" value="">
+                                <ul class="live-search-content hidden"></ul>
+                            </div>
+                        </form>
+                        <div class="input-group-btn btn -sm btn-primary" onclick="searchHuman('#header-human-search')">天眼一下
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="tyc-nav ">
+                <div class="nav-item nav-line-right -vip "><a class="title link-vip-noline -nav" href="https://www.tianyancha.com/vipintro" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Vip"><span>VIP会员</span><i class="tic tic-caret-down nav-icon"></i></a>
+                    <div class="block content">
+                        <div class="triangle"></div>
+                        <div class="block-content"><a class="item" href="https://www.tianyancha.com/vipintro" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.PersonVIP" rel="nofollow">个人VIP</a><a class="item" href="https://www.tianyancha.com/vipbusiness" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.CompanyVIP" rel="nofollow">企业套餐</a></div>
+                    </div>
+                </div>
+                <div class="nav-item nav-line-right ">
+                    <!--<span class="nav-new -bg"><i class="tic tic-new-bg"></i></span>-->
+                    <!--<span class="nav-new"><i class="tic tic-nav-new-icon"></i></span>--><a class="title  link-nav"><span>百宝箱</span><i class="tic tic-caret-down nav-icon"></i></a>
+                    <div class="block content -box">
+                        <div class="triangle"></div>
+                        <div class="block-content"><a class="nav-box" href="https://www.tianyancha.com/claim/entry" rel="nofollow" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Renzheng"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png"><span class="box-title">企业认证</span></a><a class="nav-box" href="https://www.tianyancha.com/batch" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.LargeSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png"><span class="box-title">批量查询</span></a><a class="nav-box" href="https://www.tianyancha.com/map" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Map"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png"><span class="box-title">天眼地图</span></a><a class="nav-box -nextline" href="https://pilu.tianyancha.com/announcements" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.ShangshiSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png"><span class="box-title">上市公告</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.shangbiao" href="https://ip.tianyancha.com/reg/intro/t1" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-trademark-01.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-trademark-01.png"><span class="box-title">商标注册</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.api" href="https://open.tianyancha.com/" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png"><span class="box-title">API服务</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.financing" href="https://www.tianyancha.com/elibs_financing" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-venture.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-venture.png"><span class="box-title">创业公司</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.quoted" href="https://www.tianyancha.com/elibs_quoted" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-listed.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-listed.png"><span class="box-title">上市公司</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.investor" href="https://www.tianyancha.com/elibs_investor" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-invest.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-invest.png"><span class="box-title">投资机构</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.parks" href="https://www.tianyancha.com/parks" target="_blank"><img class="lazy-img -image" ;="" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-park.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-park.png"><span class="box-title">园区大全</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item nav-line-right "><a class="title  link-nav"><span>合作通道</span><i class="tic tic-caret-down nav-icon"></i></a>
+                    <div class="block content">
+                        <div class="triangle"></div>
+                        <div class="block-content"><a class="item" href="https://www.tianyancha.com/appfortrial" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Media" rel="nofollow">媒体通道</a><a class="item" href="https://www.tianyancha.com/business" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Business" rel="nofollow">商务通道</a><a class="item" href="https://www.tianyancha.com/protrial" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Pro">专业版通道</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item " nav-type="user"><a class="title link-nav" href="https://www.tianyancha.com"><span>首页</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="container mt74">
+        <div class="content">
+            <div class="captcha-title">我们只是确认一下你不是机器人，</div>
+            <div class="captcha-title">请你按照 <b>A图</b> 文字 <span style="color: #f68b45;">顺序</span>选中 <b>B图</b> 文字！</div>
+            <div class="box2">
+                <div class="new-box94">
+                    <div class="ip">
+                        IP：<span id="ipContentIe">120.244.218.152</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        访问时间：<span id="timeContentIe">2021-10-02 12:24:03</span>
+                        <div id="user_mobile_box" style="">用户：<span id="user_mobile">13051462891</span></div>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <span class="ABmid">A</span>
+                        <img id="targetImgie" class="ABmid" src="data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAeAUADASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1qiii
+vQOMKjnuIbWFpriaOGJcbnkYKo5xyTUlZniO0F94c1G3MTSs0DMiLnJcDK4x1O4DihFRSckmY+p+
+LbaO/wDs9nqduSER4hDAbkzsfMBj+Vhg/wCrI5HPsa2NB1S41jTjd3Fg1k3mMgjZ9xO04JPAwdwY
+YI7Vl6mLHTtNsdY0iO3hKuHhhjRkF0sgAMYVR95sKRkHBQZ4zTdC8Q6Yljp9pHqMN1cTzsk7M2w+
+YwaRmClQSpc7RwPvAdeKq2mh0ygnTvCJ1NFFFScgUUUUAFFFFABRRRQBFc3VvZW7XF1PFBCmN0kr
+hVXJwMk8dSKlrh/GJ1S6W30K6WzktNU1COJWt2YXAgBDsdhBGVxy+SMY+UZ4r6V4htrTW9dlP26d
+4ZzZ2mkWSvL5UUOxGdUGFUMSOoGMEAnJpm6otxuj0CiiikYBRRRQAUUUUAFNkkSKNpJHVI0BZmY4
+CgdSTTq57xz/AMidf/8AbP8A9GLQXCPNJR7mkNb0kxtINUsjGpClvtCYBOcDOe+D+RqWHU9PuWjW
+C+tpTISqBJVbcQMkDB5wCCfrXAalIXk1+6vdtpcSSFI4RMAWMcBjYguoDAiZSBwxBJHIGbfg+O1m
+u7OSaeP7XGgYCUIkxPlBVVRjcU8sknkg4RgclwA6JUEouR31FFFByBRRRQAUUUUAFFFZ+tXJtNKm
+l8i1mjAIkjupxEjKRjGSCMk4GDgc9aTdhpXdiy15apdpaPcwrcuNyQmQB2HPIXqRwfyNT15U+km2
+1Czj02G4W4uJvtjTCNC6wfNkqYJeE2sBtULvPQ9FHX6Cc3Y+0rfCYljGC16Y1HPyt5o2kgY+Y4yT
+wBgExGbbs0bTpKKumdNRRRWhgFFFFABRRRQAVHced9ml+zeX5+w+X5mdu7HGcc4z6VJRQMxdP0GW
+1ntXuNQkuIrOFI7aEIEWNggRnOD8xPOM9NxrRm0+yuLmO5ms7eSePGyV4gWXByMEjIweas0UXKc5
+N3YUUUUEBRRRQAUUUUAFMlEhhcQsqSlTsZ13AHsSARke2R9afRQM4q+i1hfF0F3eQfbU0rTZ7u2a
+0tniWWZvk8oks+TgZAHPPQ1X8Ha5Z6bp3hjw/bTwXst5FLJM8cwzbnBl2sozz8xXkj7pPtXe0UGv
+tU48rX9a/wCYUUUUGIUUUUAFFFFABVe+sbbUrOS0u4/MgkxuTcRnBBHI56gVYooGm07o43WvDMok
+tksYZ7mA3f2qRHZGji2qAEEZKBlI2rgn5VXA6nNvwzBqMer6ob8XqxoIlgE7uU5BLbQXcHkDncce
+2cV09FBq60nHlYUUUUGIUUUUAFFFFABWXry3s2myWthbzPPONizRziIQHIwzNkNgdcKDnGD1rUop
+NXVhp2dzzVvD9xc3eoQmwa81JL2GeO+mtfJhmA4cOpAGwHOdpJckHkDNdB4Kt7S1ivIv3y6opQXs
+Uob9zjIjRckgoFHynJyMH0A6qiojTSdzWVZyVgooorQxCiiigD//2Q==" alt="">
+                    </div>
+                    <div>
+                        <span class="ABmid">B</span>
+                        <div style="position: relative;" class="ABmid">
+                            <img id="bgImgie" src="data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAUADASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD19I5Q
+Qqq7Jtzl+34djTIwu8fapk2gkFev4U92kkcPEpIK8KD6dyaZDas02ySA4YnDiT7v+NAyyOcGORVB
+xgFcAn3xyKari4DRyoBKM5XsR60RWirPGyNsUDkAffPSqs0yozyLGI8H5jnLHnoPSgCyttKhQQzN
+6OD0X8Kf9jRixldnVwBz0yDwR3FIlojhGly7PwRnp9fU1XgWZL/y0jaOEEgknKtjoRnvQBZdIirR
+gyrjtEp/PI60trJEYwiOXkJ+dXzn8jTbm72IVjUFs4Kk4qlfzpNZPIVZSqk7yMFTjoDQBalE6XG6
+NWEWcFt2QR6461FcwW8kch8wxsScKW4c9s57VNbTtIIxICpdQQ7fyPv/AIirBRMSfLjccMMfe7fn
+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
+2Q==" alt="">
+                        </div>
+                    </div>
+                    <div style="margin-right: 10px;margin-top: 10px;overflow: hidden">
+                        <div id="checkFalse" class="f12" style="display: none;color: #ef5644;float: left;margin-left: 20px;">
+                            验证错误，请重新选择。
+                        </div>
+                        <div class="f12 c6" style="float: right">
+                            看不清，点击<span id="refeshie" class="c9" style="cursor: pointer">刷新</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="submitie" class="btn btn-primary -md my_btn_web">提交</div>
+                <div class="question">
+                    提交后没解决问题？欢迎加入群515982002反馈
+                </div>
+            </div>
+
+            <!--<div class="btPage">-->
+            <!--<a href="https://www.tianyancha.com">返回首页</a>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+</div>
+
+<div style="background-color: #2e2e2e;position: absolute;bottom: 0;left: 0;width: 100%;padding-top: 10px;padding-bottom: 10px;">
+    <div class="foot">
+        <div style="font-size:12px; margin-right:36px;display: inline-block;vertical-align: top;">
+            <div>用户交流群</div>
+            <div style="font-size:16px;">515982002</div>
+        </div>
+        <div style="font-size:12px;display: inline-block;vertical-align: top;">
+            <div>商务合作</div>
+            <div style="font-size:16px;">bd@jindidata.com</div>
+        </div>
+    </div>
+    <div class="foot2">
+        <div class="text">
+            <a href="http://www.tianyancha.com/property/1" target="_blank">关于我们</a>
+            <span>|</span>
+            <a href="http://www.tianyancha.com/property/2">服务协议</a>
+            <span>|</span>
+            <a href="http://www.tianyancha.com/property/3">版权申明</a>
+            <span>|</span>
+            <a href="http://www.tianyancha.com/property/4">意见反馈</a>
+        </div>
+        <div class="ff" style="margin-top:12px;">@2015 JINDIDATA 京ICP备14061319号－2</div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var _tha = $(this);
+        $('.relationTab').click(function () {
+            window.open('https://www.tianyancha.com/relation');
+        });
+
+        $('.company').click(function () {
+            $(this).addClass('active');
+            $('.human').removeClass('active');
+            $('#company').show();
+            $('#human').hide();
+        });
+
+        $('.human').click(function () {
+            $(this).addClass('active');
+            $('.company').removeClass('active');
+            $('#company').hide();
+            $('#human').show();
+
+            _tha.keydown(function (event) {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e && e.keyCode == 13) {
+                    e.preventDefault();
+                    searchHuman('#header-human-search')
+                }
+            })
+        });
+
+        if ($('.company').hasClass('active')) {
+            _tha.keydown(function (event) {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e && e.keyCode == 13) {
+                    e.preventDefault();
+                    searchCompany('#header-company-search')
+                }
+            })
+        }
+
+        // 处理悬浮二维码
+        var sTop = 0;
+        $(window).scroll(function () {
+            sTop = $(this).scrollTop();
+            if (sTop >= 555 && sTop <= 5120) {
+                $('.app-flowqrcode').fadeIn(200);
+            } else {
+                $('.app-flowqrcode').fadeOut(200);
+            }
+        });
+
+        $('#tyc_banner_left').on('click.tyc_banner_left', function () {
+            $('.banner-bottom').addClass('-show');
+            $('.banner-left').addClass('-leave');
+        });
+
+        $('#tyc_banner_close').on('click.tyc_banner_close', function (e) {
+            e.stopPropagation();
+            $('.banner-bottom').removeClass('-show');
+            $('.banner-left').removeClass('-leave');
+        });
+
+        $('#tyc_banner_bottom').on('click.tyc_banner_bottom', function () {
+            window.open('https://www.tianyancha.com/claim/entry');
+        })
+    });
+
+    function searchCompany(el) {
+        var key;
+        key = $(el).val();
+        key = formatAndFilterUrl(key);
+        if (key) {
+            window.location.href = "https://www.tianyancha.com/search?key=" + decodeURIComponent(key);
+        }
+    };
+
+    function searchHuman(el) {
+        var key;
+        key = $(el).val();
+        key = formatAndFilterUrl(key);
+        if (key) {
+            window.location.href = "https://www.tianyancha.com/humansearch/" + decodeURIComponent(key);
+        }
+    };
+
+    function formatAndFilterUrl(input) {
+        if (!String.prototype.trim) {
+            String.prototype.trim = function () {
+                return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+            };
+        }
+        if (input) {
+            input = input.trim();
+            if (input.indexOf('.') == 0)
+                input = input.replace('.', '');
+            return input.replace(/#/gi, '').replace(/\!/gi, '').replace(/\\/gi, '')
+                .replace(/\%/gi, '').replace(/\=/gi, '')
+                .replace(/\;/gi, '').replace(/\?/gi, '');
+            return input.replace(/\//gi, '').replace(/#/gi, '').replace(/\!/gi, '').replace(/\\/gi, '')
+                .replace(/\%/gi, '').replace(/\=/gi, '').replace(/:/gi, '')
+                .replace(/\;/gi, '').replace(/\'/gi, '').replace(/\?/gi, '');
+        }
+    };
+</script>
+
+
+
+</body></html>
